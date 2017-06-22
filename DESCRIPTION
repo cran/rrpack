@@ -1,0 +1,28 @@
+Package: rrpack
+Title: Reduced-Rank Regression
+Version: 0.1-5
+Date: 2017-06-20
+Authors@R: c(person(given = "Kun", family = "Chen", role = c("aut", "cre"),
+                    email = "kun.chen@uconn.edu"),
+             person(given = "Wenjie", family = "Wang", role = "ctb"),
+             person(given = "Jun", family = "Yan", role = "ctb"))
+Description: Multivariate regression methodologies including reduced-rank
+    regression (RRR), reduced-rank ridge regression (RRS), robust reduced-rank
+    regression (R4), generalized/mixed-response reduced-rank regression (mRRR),
+    row-sparse reduced-rank regression (SRRR), reduced-rank regression with a
+    sparse singular value decomposition (RSSVD), and sparse and orthogonal
+    factor regression (SOFAR).
+Depends: R (>= 3.3.2)
+Imports: ggplot2, glmnet, lassoshooting, MASS, Rcpp (>= 0.12.0)
+LinkingTo: Rcpp, RcppArmadillo
+License: GPL (>= 3.0)
+LazyData: true
+RoxygenNote: 6.0.1
+NeedsCompilation: yes
+Packaged: 2017-06-21 13:26:50 UTC; kuc13001
+Author: Kun Chen [aut, cre],
+  Wenjie Wang [ctb],
+  Jun Yan [ctb]
+Maintainer: Kun Chen <kun.chen@uconn.edu>
+Repository: CRAN
+Date/Publication: 2017-06-22 13:07:49 UTC
