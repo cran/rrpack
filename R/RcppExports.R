@@ -2,54 +2,54 @@
 # Generator token: 10BE3573-1514-4C36-9D1C-5A225CD40393
 
 penreg_Rcpp <- function(Y, X, lambda, beta0, control) {
-    .Call('rrpack_penreg_Rcpp', PACKAGE = 'rrpack', Y, X, lambda, beta0, control)
+    .Call('_rrpack_penreg_Rcpp', PACKAGE = 'rrpack', Y, X, lambda, beta0, control)
 }
 
 penreg_Rcpp_XY <- function(XY, XX, lambda, beta0, control) {
-    .Call('rrpack_penreg_Rcpp_XY', PACKAGE = 'rrpack', XY, XX, lambda, beta0, control)
+    .Call('_rrpack_penreg_Rcpp_XY', PACKAGE = 'rrpack', XY, XX, lambda, beta0, control)
 }
 
 procrustes_RCpp <- function(XY, XX, D, rho2, U, control) {
-    .Call('rrpack_procrustes_RCpp', PACKAGE = 'rrpack', XY, XX, D, rho2, U, control)
+    .Call('_rrpack_procrustes_RCpp', PACKAGE = 'rrpack', XY, XX, D, rho2, U, control)
 }
 
-MGlasso_C <- function(Y, X, lam, B0, conv, maxiter) {
-    .Call('rrpack_MGlasso_C', PACKAGE = 'rrpack', Y, X, lam, B0, conv, maxiter)
+MGlasso_Rcpp <- function(Y, X, lam, B0, conv, maxiter) {
+    .Call('_rrpack_MGlasso_Rcpp', PACKAGE = 'rrpack', Y, X, lam, B0, conv, maxiter)
 }
 
 srrr_Rcpp <- function(Y, X, method, A0, V0, nrank, lambda, conv, maxiter, inner_conv, inner_iter, WA) {
-    .Call('rrpack_srrr_Rcpp', PACKAGE = 'rrpack', Y, X, method, A0, V0, nrank, lambda, conv, maxiter, inner_conv, inner_iter, WA)
+    .Call('_rrpack_srrr_Rcpp', PACKAGE = 'rrpack', Y, X, method, A0, V0, nrank, lambda, conv, maxiter, inner_conv, inner_iter, WA)
 }
 
 surr_fit_Rcpp <- function(Y, X, lambda, U0, V0, WU, WV, Xtran, control) {
-    .Call('rrpack_surr_fit_Rcpp', PACKAGE = 'rrpack', Y, X, lambda, U0, V0, WU, WV, Xtran, control)
+    .Call('_rrpack_surr_fit_Rcpp', PACKAGE = 'rrpack', Y, X, lambda, U0, V0, WU, WV, Xtran, control)
 }
 
 kron_RcppArma <- function(A, B) {
-    .Call('rrpack_kron_RcppArma', PACKAGE = 'rrpack', A, B)
+    .Call('_rrpack_kron_RcppArma', PACKAGE = 'rrpack', A, B)
 }
 
 a5 <- function(x, y) {
-    .Call('rrpack_a5', PACKAGE = 'rrpack', x, y)
+    .Call('_rrpack_a5', PACKAGE = 'rrpack', x, y)
 }
 
 a6 <- function(x, y) {
-    .Call('rrpack_a6', PACKAGE = 'rrpack', x, y)
+    .Call('_rrpack_a6', PACKAGE = 'rrpack', x, y)
 }
 
 a17 <- function(x) {
-    .Call('rrpack_a17', PACKAGE = 'rrpack', x)
+    .Call('_rrpack_a17', PACKAGE = 'rrpack', x)
 }
 
 a18 <- function(x) {
-    .Call('rrpack_a18', PACKAGE = 'rrpack', x)
+    .Call('_rrpack_a18', PACKAGE = 'rrpack', x)
 }
 
 a19 <- function(x) {
-    .Call('rrpack_a19', PACKAGE = 'rrpack', x)
+    .Call('_rrpack_a19', PACKAGE = 'rrpack', x)
 }
 
 a20 <- function(x) {
-    .Call('rrpack_a20', PACKAGE = 'rrpack', x)
+    .Call('_rrpack_a20', PACKAGE = 'rrpack', x)
 }
 

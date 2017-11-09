@@ -2,13 +2,14 @@
 // [[Rcpp::depends(RcppArmadillo)]]
 
 #include <Rcpp.h>
+#include <math.h>
 using namespace arma;
 using namespace Rcpp;
 using namespace std;
 using namespace sugar;
 
 // [[Rcpp::export]]
-Rcpp::List MGlasso_C (arma::mat Y, arma::mat X, arma::vec lam, arma::mat B0, double conv, int maxiter) {
+Rcpp::List MGlasso_Rcpp (arma::mat Y, arma::mat X, arma::vec lam, arma::mat B0, double conv, int maxiter) {
   // min |Y-XB|^2 + lam*|B|
   int  p=X.n_cols, iter=0, j;  // n=Y.n_rows, q=Y.n_cols,
   double  diff=10*conv, l2B1, sse;
@@ -34,7 +35,7 @@ Rcpp::List MGlasso_C (arma::mat Y, arma::mat X, arma::vec lam, arma::mat B0, dou
     for (j = 0; j < p; j++) {
       res1j = res1 +  X.col(j)* B1.row(j); //n q
       XRj =   trans(X.col(j)) * res1j;    //1 q
-      arma::rowvec t1=XRj/as_scalar(sh(j))*max(0.0,1-lam(j)/sqrt(accu(square(XRj))));
+      arma::rowvec t1=XRj/as_scalar(sh(j))*max(0.0,1-lam(j)/pow(accu(square(XRj)),0.5));
       B1.row(j) = t1;
       res1 = res1j - X.col(j)* B1.row(j);
     }
@@ -42,7 +43,7 @@ Rcpp::List MGlasso_C (arma::mat Y, arma::mat X, arma::vec lam, arma::mat B0, dou
     if (l2B1 == 0) {
       iter = maxiter;
     } else {
-      diff = sqrt(accu(square(B0 - B1))/l2B1);
+      diff = pow(accu(square(B0 - B1))/l2B1,0.5);
       iter = iter + 1;
     }
   }
@@ -80,8 +81,9 @@ Rcpp::List srrr_Rcpp (arma::mat Y, arma::mat X, String method, arma::mat A0, arm
   arma::mat YX = Y.t() * X;
   //vec lamA = as_scalar(lambda)*ones(p);
 
-  int xrank = accu(svd(X) > 0.01);
-  int iter=0, dfu0, dfv0;
+  double xrank = accu(svd(X) > 0.01);
+  int iter=0;
+  double dfu0, dfv0;
   bool conv_flag;
   double l2C1, sse, df, BIC, BICP, AIC, GCV, GIC;
   arma::vec s;
@@ -138,7 +140,7 @@ Rcpp::List srrr_Rcpp (arma::mat Y, arma::mat X, String method, arma::mat A0, arm
     C0 = C1;
 
     arma::mat YV0 = Y*V0;
-    out_MGlasso = MGlasso_C(YV0, X, lambda*WA, A0, inner_conv, inner_iter);
+    out_MGlasso = MGlasso_Rcpp(YV0, X, lambda*WA, A0, inner_conv, inner_iter);
     arma::mat MGlassoB = out_MGlasso["B"];
     A1 = MGlassoB;   //p r
     W = YX * A1;      //q r
@@ -151,7 +153,7 @@ Rcpp::List srrr_Rcpp (arma::mat Y, arma::mat X, String method, arma::mat A0, arm
       diff(iter) = 0;
     } else {
       iter = iter + 1;
-      diff(iter) = sqrt(accu(square(C0 - C1))/l2C1);
+      diff(iter) = pow(accu(square(C0 - C1))/l2C1,0.5);
     }
 
   }
@@ -162,12 +164,12 @@ Rcpp::List srrr_Rcpp (arma::mat Y, arma::mat X, String method, arma::mat A0, arm
   dfu0 = accu(A1 != 0);
   dfv0 = accu(V1 != 0);
   df = dfu0 * xrank/p + dfv0 - nrank*nrank;
-  double logqn = log(q * n);
-  double logsse = log(sse);
+  double logqn = std::log(static_cast <double>(q * n));
+  double logsse = std::log(sse);
   BIC = logsse + df*logqn/(q*n);
   BICP = logsse + 2*df*logqn/(q*n);
   AIC = logsse + 2*df/(q*n);
-  GIC = logsse + df*log(logqn)*log(p*q)/(q*n);
+  GIC = logsse + df*std::log(logqn)*std::log(static_cast <double>(p*q))/(q*n);
   double dfqn2 = pow((1 - df/(q*n)), 2);
   GCV = sse/(q*n*dfqn2);
   if (diff(iter) <= conv) {

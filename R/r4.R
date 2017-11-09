@@ -79,7 +79,7 @@
 ##' @references
 ##'
 ##' She, Y. and Chen, K. (2017) Robust reduced-rank regression.
-##' \emph{Biometrika}. In press.
+##' \emph{Biometrika}, 104 (3), 633--647.
 ##'
 ##' @importFrom MASS ginv
 ##' @importFrom stats quantile loess

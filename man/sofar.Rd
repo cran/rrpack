@@ -5,7 +5,7 @@
 \title{Sparse orthogonal factor regression}
 \usage{
 sofar(Y, X, nrank = 1, ic.type = c("GIC", "AIC", "BIC", "GCV"),
-      modstr = list(), control = list())
+      modstr = list(), control = list(), screening = TRUE)
 }
 \arguments{
 \item{Y}{response matrix}
@@ -21,6 +21,9 @@ fitting}
 
 \item{control}{a list of internal computation parameters controlling
 optimization}
+
+\item{screening}{If TRUE, marginal screening via lasso is performed before
+sofar fitting.}
 }
 \value{
 A \code{sofar} object containing
@@ -95,6 +98,6 @@ crossprod(fit1$V) #check orthogonality
 
 }
 \references{
-Y. Uematsu, K. Chen, Y. Fan, J. Lv, and W. Lin. (2017) \emph{SOFAR:
-large-scale association network learning}
+Y. Uematsu, K. Chen, Y. Fan, J. Lv, and W. Lin. (2017) SOFAR:
+large-scale association network learning. \emph{arXiv:1704.08349}.
 }

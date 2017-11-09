@@ -41,12 +41,10 @@ rrr.sim4(n = 100, p = 12, q = 8, nrank = 3, s2n = 1, rho_X = 0, rho_E = 0,
 }
 \value{
 similated model and data
-
-through a mixed-response reduced-rank regression. \emph{Technical report}.
 }
 \description{
 Generate data from a mean-shifted reduced-rank regression model
 }
 \references{
-She, Y. and Chen, K. (2017) Robust reduced-rank regression. \emph{Biometrika}. In press.
+She, Y. and Chen, K. (2017) Robust reduced-rank regression. \emph{Biometrika}, 104 (3), 633--647.
 }

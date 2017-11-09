@@ -39,7 +39,7 @@
 ##'
 ##' @usage
 ##' sofar(Y, X, nrank = 1, ic.type = c("GIC", "AIC", "BIC", "GCV"),
-##'       modstr = list(), control = list())
+##'       modstr = list(), control = list(), screening = TRUE)
 ##'
 ##' @param Y response matrix
 ##' @param X covariate matrix
@@ -49,6 +49,8 @@
 ##'     fitting
 ##' @param control a list of internal computation parameters controlling
 ##'     optimization
+##' @param screening If TRUE, marginal screening via lasso is performed before
+##'     sofar fitting.
 ##'
 ##' @return
 ##' A \code{sofar} object containing
@@ -65,8 +67,8 @@
 ##'
 ##' @references
 ##'
-##' Y. Uematsu, K. Chen, Y. Fan, J. Lv, and W. Lin. (2017) \emph{SOFAR:
-##' large-scale association network learning}
+##' Y. Uematsu, K. Chen, Y. Fan, J. Lv, and W. Lin. (2017) SOFAR:
+##' large-scale association network learning. \emph{arXiv:1704.08349}.
 ##'
 ##' @examples
 ##' \dontrun{
@@ -97,7 +99,8 @@ sofar <- function(Y,
                   nrank = 1,
                   ic.type = c("GIC", "AIC", "BIC", "GCV"),
                   modstr = list(),
-                  control = list())
+                  control = list(),
+                  screening = TRUE)
 {
   Call <- match.call()
 
@@ -135,9 +138,14 @@ sofar <- function(Y,
   tol <- control$sv.tol
 
   ## Initial screening from lasso
-  ini.screen <- sofar.init(Y, X, nrank)
-  p.index <- ini.screen$p.index
-  q.index <- ini.screen$q.index
+  if(screening == TRUE){
+    ini.screen <- sofar.init(Y, X, nrank)
+    p.index <- ini.screen$p.index
+    q.index <- ini.screen$q.index
+  } else{
+    p.index <- 1:p
+    q.index <- 1:q
+  }
   ## U <- init$coef.svd$U
   ## V <- init$coef.svd$V
   ## D <- init$coef.svd$D
@@ -371,7 +379,7 @@ sofar <- function(Y,
 ##'
 ##' @usage
 ##' cv.sofar(Y, X, nrank = 1, nfold = 5, norder = NULL, modstr = list(),
-##'          control = list())
+##'          control = list(), screening = TRUE)
 ##'
 ##' @param Y response matrix
 ##' @param X covariate matrix
@@ -382,6 +390,8 @@ sofar <- function(Y,
 ##'     fitting
 ##' @param control a list of internal computation parameters controlling
 ##'     optimization
+##' @param screening If TRUE, marginal screening via lasso is performed before
+##'     sofar fitting.
 ##'
 ##' @export
 cv.sofar <- function(Y,
@@ -390,7 +400,8 @@ cv.sofar <- function(Y,
                      nfold = 5,
                      norder = NULL,
                      modstr = list(),
-                     control = list())
+                     control = list(),
+                     screening = TRUE)
 {
   Call <- match.call()
 
@@ -428,9 +439,15 @@ cv.sofar <- function(Y,
   tol <- control$sv.tol
 
   ## initial screening from lasso
-  ini.screen <- sofar.init(Y, X, nrank)
-  p.index <- ini.screen$p.index
-  q.index <- ini.screen$q.index
+  if(screening == TRUE){
+    ini.screen <- sofar.init(Y, X, nrank)
+    p.index <- ini.screen$p.index
+    q.index <- ini.screen$q.index
+  } else{
+    p.index <- 1:p
+    q.index <- 1:q
+  }
+  
   Y.reduced <- Y[, q.index]
   X.reduced <- X[, p.index]
   q.reduced <- length(q.index)

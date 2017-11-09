@@ -127,7 +127,7 @@ rrr.sim1 <-
 ##'
 ##' Chen, L. and Huang, J.Z. (2012) Sparse reduced-rank regression for
 ##' simultaneous dimension reduction and variable selection. \emph{Journal of
-##' the American Statistical Association}. 107:500, 1533--1545.
+##' the American Statistical Association}, 107:500, 1533--1545.
 ##'
 ##' @importFrom stats rnorm
 ##' @export
@@ -318,9 +318,8 @@ rrr.sim3 <-
 ##' @param SigmaE correlation structure of errors
 ##' @return similated model and data
 ##'
-##' through a mixed-response reduced-rank regression. \emph{Technical report}.
 ##' @references
-##' She, Y. and Chen, K. (2017) Robust reduced-rank regression. \emph{Biometrika}. In press.
+##' She, Y. and Chen, K. (2017) Robust reduced-rank regression. \emph{Biometrika}, 104 (3), 633--647.
 ##' @importFrom stats rnorm sd
 ##' @export
 rrr.sim4 <- function(n = 100,
@@ -452,7 +451,7 @@ rrr.sim4 <- function(n = 100,
 ##' @return similated model and data
 ##'
 ##' @references
-##' She, Y. and Chen, K. (2017) Robust reduced-rank regression. \emph{Biometrika}. In press.
+##' She, Y. and Chen, K. (2017) Robust reduced-rank regression. \emph{Biometrika}, 104 (3), 633--647.
 ##' @importFrom stats sd
 ##' @export
 rrr.sim5 <-

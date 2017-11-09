@@ -8,7 +8,7 @@ using namespace Rcpp;
 
 // penreg_Rcpp
 arma::vec penreg_Rcpp(arma::vec Y, arma::mat X, double lambda, arma::vec beta0, List control);
-RcppExport SEXP rrpack_penreg_Rcpp(SEXP YSEXP, SEXP XSEXP, SEXP lambdaSEXP, SEXP beta0SEXP, SEXP controlSEXP) {
+RcppExport SEXP _rrpack_penreg_Rcpp(SEXP YSEXP, SEXP XSEXP, SEXP lambdaSEXP, SEXP beta0SEXP, SEXP controlSEXP) {
 BEGIN_RCPP
     Rcpp::RObject rcpp_result_gen;
     Rcpp::RNGScope rcpp_rngScope_gen;
@@ -23,7 +23,7 @@ END_RCPP
 }
 // penreg_Rcpp_XY
 arma::vec penreg_Rcpp_XY(arma::vec XY, arma::mat XX, double lambda, arma::vec beta0, List control);
-RcppExport SEXP rrpack_penreg_Rcpp_XY(SEXP XYSEXP, SEXP XXSEXP, SEXP lambdaSEXP, SEXP beta0SEXP, SEXP controlSEXP) {
+RcppExport SEXP _rrpack_penreg_Rcpp_XY(SEXP XYSEXP, SEXP XXSEXP, SEXP lambdaSEXP, SEXP beta0SEXP, SEXP controlSEXP) {
 BEGIN_RCPP
     Rcpp::RObject rcpp_result_gen;
     Rcpp::RNGScope rcpp_rngScope_gen;
@@ -38,7 +38,7 @@ END_RCPP
 }
 // procrustes_RCpp
 Rcpp::List procrustes_RCpp(arma::mat XY, arma::mat XX, arma::mat D, double rho2, arma::mat U, Rcpp::List control);
-RcppExport SEXP rrpack_procrustes_RCpp(SEXP XYSEXP, SEXP XXSEXP, SEXP DSEXP, SEXP rho2SEXP, SEXP USEXP, SEXP controlSEXP) {
+RcppExport SEXP _rrpack_procrustes_RCpp(SEXP XYSEXP, SEXP XXSEXP, SEXP DSEXP, SEXP rho2SEXP, SEXP USEXP, SEXP controlSEXP) {
 BEGIN_RCPP
     Rcpp::RObject rcpp_result_gen;
     Rcpp::RNGScope rcpp_rngScope_gen;
@@ -52,9 +52,9 @@ BEGIN_RCPP
     return rcpp_result_gen;
 END_RCPP
 }
-// MGlasso_C
-Rcpp::List MGlasso_C(arma::mat Y, arma::mat X, arma::vec lam, arma::mat B0, double conv, int maxiter);
-RcppExport SEXP rrpack_MGlasso_C(SEXP YSEXP, SEXP XSEXP, SEXP lamSEXP, SEXP B0SEXP, SEXP convSEXP, SEXP maxiterSEXP) {
+// MGlasso_Rcpp
+Rcpp::List MGlasso_Rcpp(arma::mat Y, arma::mat X, arma::vec lam, arma::mat B0, double conv, int maxiter);
+RcppExport SEXP _rrpack_MGlasso_Rcpp(SEXP YSEXP, SEXP XSEXP, SEXP lamSEXP, SEXP B0SEXP, SEXP convSEXP, SEXP maxiterSEXP) {
 BEGIN_RCPP
     Rcpp::RObject rcpp_result_gen;
     Rcpp::RNGScope rcpp_rngScope_gen;
@@ -64,13 +64,13 @@ BEGIN_RCPP
     Rcpp::traits::input_parameter< arma::mat >::type B0(B0SEXP);
     Rcpp::traits::input_parameter< double >::type conv(convSEXP);
     Rcpp::traits::input_parameter< int >::type maxiter(maxiterSEXP);
-    rcpp_result_gen = Rcpp::wrap(MGlasso_C(Y, X, lam, B0, conv, maxiter));
+    rcpp_result_gen = Rcpp::wrap(MGlasso_Rcpp(Y, X, lam, B0, conv, maxiter));
     return rcpp_result_gen;
 END_RCPP
 }
 // srrr_Rcpp
 Rcpp::List srrr_Rcpp(arma::mat Y, arma::mat X, String method, arma::mat A0, arma::mat V0, int nrank, double lambda, double conv, int maxiter, double inner_conv, int inner_iter, arma::vec WA);
-RcppExport SEXP rrpack_srrr_Rcpp(SEXP YSEXP, SEXP XSEXP, SEXP methodSEXP, SEXP A0SEXP, SEXP V0SEXP, SEXP nrankSEXP, SEXP lambdaSEXP, SEXP convSEXP, SEXP maxiterSEXP, SEXP inner_convSEXP, SEXP inner_iterSEXP, SEXP WASEXP) {
+RcppExport SEXP _rrpack_srrr_Rcpp(SEXP YSEXP, SEXP XSEXP, SEXP methodSEXP, SEXP A0SEXP, SEXP V0SEXP, SEXP nrankSEXP, SEXP lambdaSEXP, SEXP convSEXP, SEXP maxiterSEXP, SEXP inner_convSEXP, SEXP inner_iterSEXP, SEXP WASEXP) {
 BEGIN_RCPP
     Rcpp::RObject rcpp_result_gen;
     Rcpp::RNGScope rcpp_rngScope_gen;
@@ -92,7 +92,7 @@ END_RCPP
 }
 // surr_fit_Rcpp
 Rcpp::List surr_fit_Rcpp(arma::mat Y, arma::mat X, double lambda, arma::vec U0, arma::vec V0, arma::vec WU, arma::vec WV, arma::mat Xtran, Rcpp::List control);
-RcppExport SEXP rrpack_surr_fit_Rcpp(SEXP YSEXP, SEXP XSEXP, SEXP lambdaSEXP, SEXP U0SEXP, SEXP V0SEXP, SEXP WUSEXP, SEXP WVSEXP, SEXP XtranSEXP, SEXP controlSEXP) {
+RcppExport SEXP _rrpack_surr_fit_Rcpp(SEXP YSEXP, SEXP XSEXP, SEXP lambdaSEXP, SEXP U0SEXP, SEXP V0SEXP, SEXP WUSEXP, SEXP WVSEXP, SEXP XtranSEXP, SEXP controlSEXP) {
 BEGIN_RCPP
     Rcpp::RObject rcpp_result_gen;
     Rcpp::RNGScope rcpp_rngScope_gen;
@@ -111,7 +111,7 @@ END_RCPP
 }
 // kron_RcppArma
 arma::mat kron_RcppArma(arma::mat A, arma::mat B);
-RcppExport SEXP rrpack_kron_RcppArma(SEXP ASEXP, SEXP BSEXP) {
+RcppExport SEXP _rrpack_kron_RcppArma(SEXP ASEXP, SEXP BSEXP) {
 BEGIN_RCPP
     Rcpp::RObject rcpp_result_gen;
     Rcpp::RNGScope rcpp_rngScope_gen;
@@ -123,7 +123,7 @@ END_RCPP
 }
 // a5
 arma::mat a5(arma::mat x, arma::vec y);
-RcppExport SEXP rrpack_a5(SEXP xSEXP, SEXP ySEXP) {
+RcppExport SEXP _rrpack_a5(SEXP xSEXP, SEXP ySEXP) {
 BEGIN_RCPP
     Rcpp::RObject rcpp_result_gen;
     Rcpp::RNGScope rcpp_rngScope_gen;
@@ -135,7 +135,7 @@ END_RCPP
 }
 // a6
 arma::vec a6(arma::mat x, arma::vec y);
-RcppExport SEXP rrpack_a6(SEXP xSEXP, SEXP ySEXP) {
+RcppExport SEXP _rrpack_a6(SEXP xSEXP, SEXP ySEXP) {
 BEGIN_RCPP
     Rcpp::RObject rcpp_result_gen;
     Rcpp::RNGScope rcpp_rngScope_gen;
@@ -147,7 +147,7 @@ END_RCPP
 }
 // a17
 arma::mat a17(arma::mat x);
-RcppExport SEXP rrpack_a17(SEXP xSEXP) {
+RcppExport SEXP _rrpack_a17(SEXP xSEXP) {
 BEGIN_RCPP
     Rcpp::RObject rcpp_result_gen;
     Rcpp::RNGScope rcpp_rngScope_gen;
@@ -158,7 +158,7 @@ END_RCPP
 }
 // a18
 arma::mat a18(arma::mat x);
-RcppExport SEXP rrpack_a18(SEXP xSEXP) {
+RcppExport SEXP _rrpack_a18(SEXP xSEXP) {
 BEGIN_RCPP
     Rcpp::RObject rcpp_result_gen;
     Rcpp::RNGScope rcpp_rngScope_gen;
@@ -169,7 +169,7 @@ END_RCPP
 }
 // a19
 arma::mat a19(arma::mat x);
-RcppExport SEXP rrpack_a19(SEXP xSEXP) {
+RcppExport SEXP _rrpack_a19(SEXP xSEXP) {
 BEGIN_RCPP
     Rcpp::RObject rcpp_result_gen;
     Rcpp::RNGScope rcpp_rngScope_gen;
@@ -180,7 +180,7 @@ END_RCPP
 }
 // a20
 int a20(List x);
-RcppExport SEXP rrpack_a20(SEXP xSEXP) {
+RcppExport SEXP _rrpack_a20(SEXP xSEXP) {
 BEGIN_RCPP
     Rcpp::RObject rcpp_result_gen;
     Rcpp::RNGScope rcpp_rngScope_gen;

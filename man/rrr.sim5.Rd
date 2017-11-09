@@ -48,5 +48,5 @@ similated model and data
 Generate data from a mean-shifted reduced-rank regression model
 }
 \references{
-She, Y. and Chen, K. (2017) Robust reduced-rank regression. \emph{Biometrika}. In press.
+She, Y. and Chen, K. (2017) Robust reduced-rank regression. \emph{Biometrika}, 104 (3), 633--647.
 }

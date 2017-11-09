@@ -6,46 +6,46 @@
 #include <stdlib.h> // for NULL
 #include <R_ext/Rdynload.h>
 
-/* FIXME:
-   Check these declarations against the C/Fortran source code.
+/* FIXME: 
+Check these declarations against the C/Fortran source code.
 */
 
 /* .Call calls */
-extern SEXP rrpack_a17(SEXP);
-extern SEXP rrpack_a18(SEXP);
-extern SEXP rrpack_a19(SEXP);
-extern SEXP rrpack_a20(SEXP);
-extern SEXP rrpack_a5(SEXP, SEXP);
-extern SEXP rrpack_a6(SEXP, SEXP);
-extern SEXP rrpack_kron_RcppArma(SEXP, SEXP);
-extern SEXP rrpack_MGlasso_C(SEXP, SEXP, SEXP, SEXP, SEXP, SEXP);
-extern SEXP rrpack_penreg_Rcpp(SEXP, SEXP, SEXP, SEXP, SEXP);
-extern SEXP rrpack_penreg_Rcpp_XY(SEXP, SEXP, SEXP, SEXP, SEXP);
-extern SEXP rrpack_procrustes_RCpp(SEXP, SEXP, SEXP, SEXP, SEXP, SEXP);
-extern SEXP rrpack_srrr_Rcpp(SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP);
-extern SEXP rrpack_surr_fit_Rcpp(SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP);
+extern SEXP _rrpack_a17(SEXP);
+extern SEXP _rrpack_a18(SEXP);
+extern SEXP _rrpack_a19(SEXP);
+extern SEXP _rrpack_a20(SEXP);
+extern SEXP _rrpack_a5(SEXP, SEXP);
+extern SEXP _rrpack_a6(SEXP, SEXP);
+extern SEXP _rrpack_kron_RcppArma(SEXP, SEXP);
+extern SEXP _rrpack_MGlasso_Rcpp(SEXP, SEXP, SEXP, SEXP, SEXP, SEXP);
+extern SEXP _rrpack_penreg_Rcpp(SEXP, SEXP, SEXP, SEXP, SEXP);
+extern SEXP _rrpack_penreg_Rcpp_XY(SEXP, SEXP, SEXP, SEXP, SEXP);
+extern SEXP _rrpack_procrustes_RCpp(SEXP, SEXP, SEXP, SEXP, SEXP, SEXP);
+extern SEXP _rrpack_srrr_Rcpp(SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP);
+extern SEXP _rrpack_surr_fit_Rcpp(SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP);
 extern SEXP rssvd_orth(SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP);
 
 static const R_CallMethodDef CallEntries[] = {
-    {"rrpack_a17",             (DL_FUNC) &rrpack_a17,              1},
-    {"rrpack_a18",             (DL_FUNC) &rrpack_a18,              1},
-    {"rrpack_a19",             (DL_FUNC) &rrpack_a19,              1},
-    {"rrpack_a20",             (DL_FUNC) &rrpack_a20,              1},
-    {"rrpack_a5",              (DL_FUNC) &rrpack_a5,               2},
-    {"rrpack_a6",              (DL_FUNC) &rrpack_a6,               2},
-    {"rrpack_kron_RcppArma",   (DL_FUNC) &rrpack_kron_RcppArma,    2},
-    {"rrpack_MGlasso_C",       (DL_FUNC) &rrpack_MGlasso_C,        6},
-    {"rrpack_penreg_Rcpp",     (DL_FUNC) &rrpack_penreg_Rcpp,      5},
-    {"rrpack_penreg_Rcpp_XY",  (DL_FUNC) &rrpack_penreg_Rcpp_XY,   5},
-    {"rrpack_procrustes_RCpp", (DL_FUNC) &rrpack_procrustes_RCpp,  6},
-    {"rrpack_srrr_Rcpp",       (DL_FUNC) &rrpack_srrr_Rcpp,       12},
-    {"rrpack_surr_fit_Rcpp",   (DL_FUNC) &rrpack_surr_fit_Rcpp,    9},
-    {"rssvd_orth",             (DL_FUNC) &rssvd_orth,              8},
-    {NULL, NULL, 0}
+  {"_rrpack_a17",             (DL_FUNC) &_rrpack_a17,              1},
+  {"_rrpack_a18",             (DL_FUNC) &_rrpack_a18,              1},
+  {"_rrpack_a19",             (DL_FUNC) &_rrpack_a19,              1},
+  {"_rrpack_a20",             (DL_FUNC) &_rrpack_a20,              1},
+  {"_rrpack_a5",              (DL_FUNC) &_rrpack_a5,               2},
+  {"_rrpack_a6",              (DL_FUNC) &_rrpack_a6,               2},
+  {"_rrpack_kron_RcppArma",   (DL_FUNC) &_rrpack_kron_RcppArma,    2},
+  {"_rrpack_MGlasso_Rcpp",    (DL_FUNC) &_rrpack_MGlasso_Rcpp,     6},
+  {"_rrpack_penreg_Rcpp",     (DL_FUNC) &_rrpack_penreg_Rcpp,      5},
+  {"_rrpack_penreg_Rcpp_XY",  (DL_FUNC) &_rrpack_penreg_Rcpp_XY,   5},
+  {"_rrpack_procrustes_RCpp", (DL_FUNC) &_rrpack_procrustes_RCpp,  6},
+  {"_rrpack_srrr_Rcpp",       (DL_FUNC) &_rrpack_srrr_Rcpp,       12},
+  {"_rrpack_surr_fit_Rcpp",   (DL_FUNC) &_rrpack_surr_fit_Rcpp,    9},
+  {"rssvd_orth",              (DL_FUNC) &rssvd_orth,               8},
+  {NULL, NULL, 0}
 };
 
 void R_init_rrpack(DllInfo *dll)
 {
-    R_registerRoutines(dll, NULL, CallEntries, NULL, NULL);
-    R_useDynamicSymbols(dll, FALSE);
+  R_registerRoutines(dll, NULL, CallEntries, NULL, NULL);
+  R_useDynamicSymbols(dll, FALSE);
 }

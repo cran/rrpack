@@ -5,7 +5,7 @@
 \title{Sparse orthognal factor regression tuned by cross validation}
 \usage{
 cv.sofar(Y, X, nrank = 1, nfold = 5, norder = NULL, modstr = list(),
-         control = list())
+         control = list(), screening = TRUE)
 }
 \arguments{
 \item{Y}{response matrix}
@@ -23,6 +23,9 @@ fitting}
 
 \item{control}{a list of internal computation parameters controlling
 optimization}
+
+\item{screening}{If TRUE, marginal screening via lasso is performed before
+sofar fitting.}
 }
 \description{
 Sparse orthognal factor regression tuned by cross validation

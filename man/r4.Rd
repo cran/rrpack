@@ -95,5 +95,5 @@ which(apply(fit$s,1,function(a)sum(a^2))!=0)
 }
 \references{
 She, Y. and Chen, K. (2017) Robust reduced-rank regression.
-\emph{Biometrika}. In press.
+\emph{Biometrika}, 104 (3), 633--647.
 }

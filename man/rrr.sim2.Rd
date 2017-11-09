@@ -37,5 +37,5 @@ Similar to the the SRRR simulation model in Chen and Huang (2012), JASA
 \references{
 Chen, L. and Huang, J.Z. (2012) Sparse reduced-rank regression for
 simultaneous dimension reduction and variable selection. \emph{Journal of
-the American Statistical Association}. 107:500, 1533--1545.
+the American Statistical Association}, 107:500, 1533--1545.
 }

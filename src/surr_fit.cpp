@@ -4,6 +4,7 @@
 #include <Rcpp.h>
 using namespace arma;
 using namespace Rcpp;
+using namespace std;
 
 arma::vec penreg_Rcpp(arma::vec Y,
           arma::mat X,
@@ -280,7 +281,7 @@ Rcpp::List surr_fit_Rcpp(arma::mat Y, arma::mat X, double lambda,
   double sse, BIC, BICP, AIC;
   arma::vec res;
   bool converged;
-  int dfu, dfv;
+  double dfu, dfv;
 
   //Initial values should be passed in already.
   //U, V, WU, WV
@@ -346,9 +347,9 @@ Rcpp::List surr_fit_Rcpp(arma::mat Y, arma::mat X, double lambda,
     D = 0.0;
     dfu = 0.0;
     dfv = 0.0;
-    BIC = log(sse);
-    BICP = log(sse);
-    AIC = log(sse);
+    BIC = std::log(sse);
+    BICP = std::log(sse);
+    AIC = std::log(sse);
   }else{
     res = y - Xv*V*as_scalar(D);
     sse = pow(norm(res,2),2);
@@ -361,9 +362,9 @@ Rcpp::List surr_fit_Rcpp(arma::mat Y, arma::mat X, double lambda,
     D = dv*du;
     U = U/du;
     V = V/dv;
-    BIC = log(sse) + log(q*n)/q/n*(dfu+dfv-1);
-    BICP = log(sse) + 2*log(p*q)/q/n*(dfu+dfv-1);
-    AIC = log(sse) + 2/q/n*(dfu+dfv-1);
+    BIC = std::log(sse) + std::log(static_cast <double>(q*n))/q/n*(dfu+dfv-1);
+    BICP = std::log(sse) + 2*std::log(static_cast <double>(p*q))/q/n*(dfu+dfv-1);
+    AIC = std::log(sse) + 2/q/n*(dfu+dfv-1);
   }
 
   if(conv <= epsilon){
