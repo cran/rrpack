@@ -4,8 +4,9 @@
 \alias{sofar}
 \title{Sparse orthogonal factor regression}
 \usage{
-sofar(Y, X, nrank = 1, ic.type = c("GIC", "AIC", "BIC", "GCV"),
-      modstr = list(), control = list(), screening = TRUE)
+sofar(Y, X, nrank = 1, su = NULL, sv = NULL,
+      ic.type = c("GIC", "BIC", "AIC", "GCV"),
+      modstr = list(), control = list(), screening = FALSE)
 }
 \arguments{
 \item{Y}{response matrix}
@@ -13,6 +14,10 @@ sofar(Y, X, nrank = 1, ic.type = c("GIC", "AIC", "BIC", "GCV"),
 \item{X}{covariate matrix}
 
 \item{nrank}{an integer specifying the desired rank/number of factors}
+
+\item{su}{a scaling vector for U such that \eqn{U^TU = diag(s_u)}.}
+
+\item{sv}{a scaling vector for V such that \eqn{V^TV = diag(s_v)}.}
 
 \item{ic.type}{select tuning method; the default is GIC}
 
@@ -33,6 +38,14 @@ A \code{sofar} object containing
   \item{Upath}{solution path of U}
   \item{Dpath}{solution path of D}
   \item{Vpath}{solution path of D}
+  \item{Rpath}{path of estimated rank}
+  \item{icpath}{path of information criteria}
+  \item{lam.id}{ids of selected lambda for GIC, BIC, AIC and GCV}
+  \item{p.index}{ids of predictors which passed screening}
+  \item{q.index}{ids of responses which passed screening}
+  \item{lamA}{tuning sequence for A}
+  \item{lamB}{tuning sequence for B}
+  \item{lamD}{tuning sequence for D}
   \item{U}{estimated left singular matrix that is orthogonal (factor weights)}
   \item{V}{estimated right singular matrix that is orthogonal (factor loadings)}
   \item{D}{estimated singular values}
@@ -98,6 +111,6 @@ crossprod(fit1$V) #check orthogonality
 
 }
 \references{
-Y. Uematsu, K. Chen, Y. Fan, J. Lv, and W. Lin. (2017) SOFAR:
+Y. Uematsu, Y. Fan, K. Chen, J. Lv, and W. Lin. (2017) SOFAR:
 large-scale association network learning. \emph{arXiv:1704.08349}.
 }

@@ -4,8 +4,8 @@
 \alias{cv.sofar}
 \title{Sparse orthognal factor regression tuned by cross validation}
 \usage{
-cv.sofar(Y, X, nrank = 1, nfold = 5, norder = NULL, modstr = list(),
-         control = list(), screening = TRUE)
+cv.sofar(Y, X, nrank = 1, su = NULL, sv = NULL, nfold = 5, norder = NULL, modstr = list(),
+         control = list(), screening = FALSE)
 }
 \arguments{
 \item{Y}{response matrix}
@@ -13,6 +13,10 @@ cv.sofar(Y, X, nrank = 1, nfold = 5, norder = NULL, modstr = list(),
 \item{X}{covariate matrix}
 
 \item{nrank}{an integer specifying the desired rank/number of factors}
+
+\item{su}{a scaling vector for U such that \eqn{U^{T}U = diag(s_{u})}}
+
+\item{sv}{a scaling vector for V such that \eqn{V^{T}V = diag(s_{v})}}
 
 \item{nfold}{number of fold; used for cv.sofar}
 

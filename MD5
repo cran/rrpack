@@ -1,4 +1,4 @@
-ddbf88f75d3a656faf807569c89747f0 *DESCRIPTION
+2e78b45b914eaa581ab00aceea07bf69 *DESCRIPTION
 e83974643fee1940e9be221fe97c9093 *NAMESPACE
 61ea4c8c496e6861388e8820d18db107 *R/RcppExports.R
 5844aaf9f7b06196197037b4de16d11f *R/coef.R
@@ -10,7 +10,7 @@ d53e5a041858e14a77d26644b0462530 *R/print.R
 774b6745ac69644b4ffe41cd5258eb21 *R/r4.R
 49f27eb863cd3e513d0d2addea86ea1b *R/rrr.R
 226fe0509c4c90fbb0120b9b1ac17a4d *R/sim.R
-638681b273f564663fe0f459b213e82c *R/sofar.R
+e59a21e786fe5d412b1edc4b08da94a8 *R/sofar.R
 64af49f1be3d5ec15c7fc066b47ccf87 *R/srrr.R
 30c80827f74031afa1233b8c638521e7 *R/ssvd.R
 4100c302a3de2cda95c856cf09bef2c2 *R/summary.R
@@ -18,7 +18,7 @@ bb471b78ea6791002d416d35d81e38c0 *R/utils.R
 cc92072ef90da05dccf4a0e23431c6bf *man/coef.Rd
 a7ec06048c552733990b1786d7a351a4 *man/cv.mrrr.Rd
 a4ce0e8a604ca375a65d3f0f12a79444 *man/cv.rrr.Rd
-3993a09fa10b2af9cac174f51147f2c3 *man/cv.sofar.Rd
+c780e0aa3177841e7ff794c10b70757e *man/cv.sofar.Rd
 ed6db1de46ce744d35dacc2fbf82e341 *man/cv.srrr.Rd
 f9ee2e38bc1acf0e83dc693579519d0a *man/mrrr.Rd
 7c1e386304f168f9d973430850db68a3 *man/plot.Rd
@@ -34,7 +34,7 @@ d3388de4edb2c3f693efdc600cbb27f1 *man/rrr.sim1.Rd
 8d55d70e56bdea8b6f1fb7fb0eab365e *man/rrr.sim5.Rd
 938fa301ecfb479326ed1784142ab29d *man/rrs.fit.Rd
 e12f74decc31b49d1edaa6a1d23d0bdd *man/rssvd.Rd
-81941c5dd634a716ea016125c604578d *man/sofar.Rd
+13e6bf2e6f68a9482e342f910286ecb3 *man/sofar.Rd
 b9dce278d70b3ce3b39897307158ab4a *man/srrr.Rd
 9921832ac3b4b1bde8da66c91fe64d44 *man/summary.Rd
 2a6f9e9e044a78154d3cfda5936d6f48 *src/Makevars
