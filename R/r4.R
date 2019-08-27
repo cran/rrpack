@@ -6,8 +6,8 @@
 ##' The available elements include
 ##' \itemize{
 ##'     \item{nlam}: parameter in the augmented Lagrangian function.
-##'     \item{adaptive}: if TRUE, use leverage values for adaptive
-##'         penalization.
+##'     \item{adaptive}: if \code{TRUE}, use leverage values for adaptive
+##'         penalization.  The default value is \code{FALSE}.
 ##'     \item{weights}: user supplied weights for adaptive penalization.
 ##'     \item{minlam}: maximum proportion of outliers.
 ##'     \item{maxlam}: maximum proportion of good observations.
@@ -171,14 +171,25 @@ r4 <- function(Y,
 
   ## adaptive penalty using leverage. Similar to Owen and She (2011)
   if (modstr$adaptive) {
-    weights <- modstr$weights
-    if (is.null(weights)) {
-      ## Note that even for entrywise penalization,
-      ## weights can be a n by 1 vector suppied to hardTH function
-      weights <- sqrt(1 - diag(H)) + control$tol
-    }
+      weights <- modstr$weights
+      if (p > n) {
+          warning("Set equal weights because p > n.")
+          weights <- rep(1, n)
+      }
+      if (is.null(weights)) {
+          ## Note that even for entrywise penalization,
+          ## weights can be a n by 1 vector suppied to hardTH function
+          weights <- tryCatch(sqrt(1 - diag(H)) + control$tol,
+                              warning = function(w) NA,
+                              error = function(e) NA)
+          if (anyNA(weights)) {
+              warning("Found NaN when setting weights. ",
+                      "Equal weights were used.")
+              weights <- rep(1, n)
+          }
+      }
   } else {
-    weights <- rep(1, n)
+      weights <- rep(1, n)
   }
 
   minlam <- modstr$minlam
@@ -302,32 +313,28 @@ r4 <- function(Y,
 
       SSE[nr, lamid] <- sum((Y - C0 - X %*% B0) ^ 2)
 
-      ## FIXME?
-      if (method == "rowl0" | method == "rowl1") {
+      if (method == "rowl0" || method == "rowl1") {
         nout <- sum(apply(C0 != 0, 1, sum) != 0)
         df <- (rX + q - nr) * nr + nout * q
-      } else if (method == "entrywise") {
-        nout <- sum(C0 != 0)
-        df <- (rX + q - nr) * nr + sum(C0 != 0)
-      }
-      if (method == "rowl0" | method == "rowl1") {
-        nout <- sum(apply(C0 != 0, 1, sum) != 0)
         IC[nr, lamid, 1] <-
           n * q * log(SSE[nr, lamid] / n / q) + 2 * df
         IC[nr, lamid, 2] <-
           n * q * log(SSE[nr, lamid] / n / q) + log(q * n) * df
         IC[nr, lamid, 3] <- n * q * log(SSE[nr, lamid] / n / q) +
-          7 * df + ifelse(nout == 0, 0, 2.1 * nout * log(exp(1) *
-                                                           n / nout))
+        7 * df + ifelse(nout == 0, 0,
+                        2.1 * nout *
+                        positivePart(log(- digamma(1) * n / nout)))
       } else if (method == "entrywise") {
         nout <- sum(C0 != 0)
+        df <- (rX + q - nr) * nr + nout
         IC[nr, lamid, 1] <-
           n * q * log(SSE[nr, lamid] / n / q) + 2 * df
         IC[nr, lamid, 2] <-
-          n * q * log(SSE[nr, lamid] / n / q) + log(q * n) * df
-        ## Need update
-        IC[nr, lamid, 3] <- n * q * log(SSE[nr, lamid] / n / q) +
-          7 * df + 2 * log(choose(n * q, nout))
+            n * q * log(SSE[nr, lamid] / n / q) + log(q * n) * df
+        ## may need further update
+        IC[nr, lamid, 3] <- n * q * log(SSE[nr, lamid] / n / q) + 7 * df +
+            ifelse(nout ==0, 0,
+                   2 * positivePart(log(- digamma(1) * q * n / nout)))
       }
     }
 
@@ -339,12 +346,10 @@ r4 <- function(Y,
       lamratio <- lamratio + 1
     } else{
       ## lamratio <- 1
-
       ## smooth IC curves then select a model in favor of less outliers
       ## Select the best fit for the given rank
       for (i in seq_len(nIC)) {
-        smoothIC[nr, , i] <- loess(IC[nr, , i] ~
-                                     c(seq_len(nlam)))$fitted
+        smoothIC[nr, , i] <- loess(IC[nr, , i] ~ seq_len(nlam))$fitted
       }
       Bestid[nr, ] <- apply(smoothIC[nr, , ], 2, last.min)
       ## Bestid[nr,] <- apply(smoothIC[nr,,],2,which.min)
@@ -541,7 +546,7 @@ rrs.fit <- function(Y,
 ##
 ## @return a list of model parameters.
 r4.modstr <- function(nlam = 100,
-                      adaptive = TRUE,
+                      adaptive = FALSE,
                       weights = NULL,
                       minlam = 0.3,
                       maxlam = 1,

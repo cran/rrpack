@@ -30,3 +30,9 @@ CorrCS <- function(p, rho)
   diag(Sigma) <- 1
   Sigma
 }
+
+## positive part
+positivePart <- function(x) {
+    x[x < 0] <- 0
+    x
+}

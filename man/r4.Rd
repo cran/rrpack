@@ -50,8 +50,8 @@ The model parameters can be controlled through argument \code{modstr}.
 The available elements include
 \itemize{
     \item{nlam}: parameter in the augmented Lagrangian function.
-    \item{adaptive}: if TRUE, use leverage values for adaptive
-        penalization.
+    \item{adaptive}: if \code{TRUE}, use leverage values for adaptive
+        penalization.  The default value is \code{FALSE}.
     \item{weights}: user supplied weights for adaptive penalization.
     \item{minlam}: maximum proportion of outliers.
     \item{maxlam}: maximum proportion of good observations.

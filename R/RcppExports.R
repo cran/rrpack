@@ -29,27 +29,3 @@ kron_RcppArma <- function(A, B) {
     .Call('_rrpack_kron_RcppArma', PACKAGE = 'rrpack', A, B)
 }
 
-a5 <- function(x, y) {
-    .Call('_rrpack_a5', PACKAGE = 'rrpack', x, y)
-}
-
-a6 <- function(x, y) {
-    .Call('_rrpack_a6', PACKAGE = 'rrpack', x, y)
-}
-
-a17 <- function(x) {
-    .Call('_rrpack_a17', PACKAGE = 'rrpack', x)
-}
-
-a18 <- function(x) {
-    .Call('_rrpack_a18', PACKAGE = 'rrpack', x)
-}
-
-a19 <- function(x) {
-    .Call('_rrpack_a19', PACKAGE = 'rrpack', x)
-}
-
-a20 <- function(x) {
-    .Call('_rrpack_a20', PACKAGE = 'rrpack', x)
-}
-

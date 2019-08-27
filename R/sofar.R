@@ -78,9 +78,10 @@
 ##'
 ##' @references
 ##'
-##' Y. Uematsu, Y. Fan, K. Chen, J. Lv, and W. Lin. (2017) SOFAR:
-##' large-scale association network learning. \emph{arXiv:1704.08349}.
-##'
+##' Uematsu, Y., Fan, Y., Chen, K., Lv, J., & Lin, W. (2019). SOFAR: large-scale
+##' association network learning. \emph{IEEE Transactions on Information
+##' Theory}, 65(8), 4924--4939.
+##' 
 ##' @examples
 ##' \dontrun{
 ##' library(rrpack)
