@@ -81,7 +81,7 @@
 ##' Uematsu, Y., Fan, Y., Chen, K., Lv, J., & Lin, W. (2019). SOFAR: large-scale
 ##' association network learning. \emph{IEEE Transactions on Information
 ##' Theory}, 65(8), 4924--4939.
-##' 
+##'
 ##' @examples
 ##' \dontrun{
 ##' library(rrpack)
@@ -132,10 +132,10 @@ sofar <- function(Y,
   #   Sv_sqrt <- diag(nrow=nrank, ncol=nrank)
   #   #Sv_sqrt_inv <- diag(nrow=nrank, ncol=nrank)
   # }else{
-  #   Sv_sqrt <- diag(sqrt(sv),nrow=nrank, ncol=nrank)    
-  #   #Sv_sqrt_inv <- diag(1/sqrt(sv),nrow=nrank, ncol=nrank)    
+  #   Sv_sqrt <- diag(sqrt(sv),nrow=nrank, ncol=nrank)
+  #   #Sv_sqrt_inv <- diag(1/sqrt(sv),nrow=nrank, ncol=nrank)
   # }
-  
+
   ## model parameters
   modstr <- do.call("sofar.modstr", modstr)
   mu <- modstr$mu
@@ -194,15 +194,16 @@ sofar <- function(Y,
     WA <- switch(
       methodA,
       lasso = matrix(1., p.reduced, nrank),
-      adlasso = (ini$coefSVD$u %*%
-                   diag(ini$coefSVD$d/sqrt(sv),
-                        nrow = length(ini$coefSVD$d)) 
-                 ) ^ (-wgamma),
+      adlasso = (
+          ini$coefSVD$u %*%
+          diag(ini$coefSVD$d / sqrt(sv),
+               nrow = length(ini$coefSVD$d)) + 1e-8
+      ) ^ (-wgamma),
       glasso = rep(1., p.reduced),
       adglasso = sqrt(rowSums((
         ini$coefSVD$u %*%
           diag(ini$coefSVD$d/sqrt(sv),
-               nrow = length(ini$coefSVD$d)) 
+               nrow = length(ini$coefSVD$d))
       ) ^ 2)) ^ (-wgamma)
     )
 
@@ -210,14 +211,14 @@ sofar <- function(Y,
       methodB,
       lasso = matrix(1., q.reduced, nrank),
       adlasso = (ini$coefSVD$v %*%
-                   diag(ini$coefSVD$d/sqrt(su),
-                        nrow = length(ini$coefSVD$d))
-                 ) ^ (-wgamma),
+                 diag(ini$coefSVD$d/sqrt(su),
+                      nrow = length(ini$coefSVD$d)) + 1e-8
+      ) ^ (-wgamma),
       glasso = rep(1., q.reduced),
       adglasso = sqrt(rowSums((
         ini$coefSVD$v %*%
           diag(ini$coefSVD$d/sqrt(su),
-               nrow = length(ini$coefSVD$d)) 
+               nrow = length(ini$coefSVD$d))
       ) ^ 2)) ^ (-wgamma)
     )
 
@@ -226,7 +227,7 @@ sofar <- function(Y,
       if (is.null(ini))
         ini <-
           rrr.fit(Y.reduced, X.reduced, nrank, coefSVD = TRUE)
-      Wd <- (ini$coefSVD$d/sqrt(su)/sqrt(sv)) ^ (-wgamma)
+      Wd <- (ini$coefSVD$d / sqrt(su) / sqrt(sv) + 1e-8) ^ (- wgamma)
     } else {
       Wd <- rep(1., nrank)
     }
@@ -359,8 +360,8 @@ sofar <- function(Y,
     GCV = fit$lam.id[4]
   )
   if(ICid==1) warning("Selected smallest lambda on the sequence. Decrease lambda.min.factor",call. = FALSE)
-  if(ICid==control$nlam) warning("Selected largest lambda on the sequence. Increase lambda.max.factor",call. = FALSE)  
-  
+  if(ICid==control$nlam) warning("Selected largest lambda on the sequence. Increase lambda.max.factor",call. = FALSE)
+
     out <- list(
     call = Call,
     Y = Y,
@@ -470,11 +471,11 @@ cv.sofar <- function(Y,
   #   Sv_sqrt <- diag(nrow=nrank, ncol=nrank)
   #   #Sv_sqrt_inv <- diag(nrow=nrank, ncol=nrank)
   # }else{
-  #   Sv_sqrt <- diag(sqrt(sv),nrow=nrank, ncol=nrank)    
-  #   #Sv_sqrt_inv <- diag(1/sqrt(sv),nrow=nrank, ncol=nrank)    
+  #   Sv_sqrt <- diag(sqrt(sv),nrow=nrank, ncol=nrank)
+  #   #Sv_sqrt_inv <- diag(1/sqrt(sv),nrow=nrank, ncol=nrank)
   # }
-  
-  
+
+
   ## model parameters
   modstr <- do.call("sofar.modstr", modstr)
   mu <- modstr$mu
@@ -513,7 +514,7 @@ cv.sofar <- function(Y,
     p.index <- 1:p
     q.index <- 1:q
   }
-  
+
   Y.reduced <- Y[, q.index]
   X.reduced <- X[, p.index]
   q.reduced <- length(q.index)
@@ -525,7 +526,7 @@ cv.sofar <- function(Y,
     if (is.null(ini))
       ini <-
         rrr.fit(Y.reduced, X.reduced, nrank, coefSVD = TRUE)
-    
+
     WA <- switch(
       methodA,
       lasso = matrix(1., p.reduced, nrank),
@@ -540,7 +541,7 @@ cv.sofar <- function(Y,
                nrow = length(ini$coefSVD$d))
       ) ^ 2)) ^ (-wgamma)
     )
-    
+
     WB <- switch(
       methodB,
       lasso = matrix(1., q.reduced, nrank),
@@ -555,7 +556,7 @@ cv.sofar <- function(Y,
                nrow = length(ini$coefSVD$d))
       ) ^ 2)) ^ (-wgamma)
     )
-    
+
     if (substr(methodA, 1, 2) == "ad" ||
         substr(methodB, 1, 2) == "ad") {
       if (is.null(ini))
@@ -565,12 +566,12 @@ cv.sofar <- function(Y,
     } else {
       Wd <- rep(1., nrank)
     }
-    
+
     modstr$WA <- WA
     modstr$WB <- WB
     modstr$Wd <- Wd
   }
-  
+
   ## if (is.null(init$U) || is.null(init$V) || is.null(init$D)) {
   U <- t(sqrt(su)*t(ini$coefSVD$u))
   V <- t(sqrt(sv)*t(ini$coefSVD$v))
@@ -586,7 +587,7 @@ cv.sofar <- function(Y,
   ##  V <- init$V
   ##  D <- init$D
   ## }
-  
+
   ## Compute lambda sequence
   if (is.null(lamA) || is.null(lamB) || is.null(lamD)) {
     lammax <- sofar.lammax(
@@ -687,8 +688,8 @@ cv.sofar <- function(Y,
   }
 
   if(fit$lam.id==1) warning("Selected smallest lambda on the sequence. Decrease lambda.min.factor",call. = FALSE)
-  if(fit$lam.id==control$nlam) warning("Selected largest lambda on the sequence. Increase lambda.max.factor", call. = FALSE)  
-  
+  if(fit$lam.id==control$nlam) warning("Selected largest lambda on the sequence. Increase lambda.max.factor", call. = FALSE)
+
   out <- list(
     call = Call,
     Y = Y,
@@ -953,11 +954,11 @@ sofar.fit <- function(Y,
     #Sv_sqrt <- diag(nrow=nrank, ncol=nrank)
     #Sv_sqrt_inv <- diag(nrow=nrank, ncol=nrank)
   # } else{
-  #   Sv_sqrt <- diag(sqrt(sv),nrow=nrank, ncol=nrank)    
-  #   #Sv_sqrt_inv <- diag(1/sqrt(sv),nrow=nrank, ncol=nrank)    
+  #   Sv_sqrt <- diag(sqrt(sv),nrow=nrank, ncol=nrank)
+  #   #Sv_sqrt_inv <- diag(1/sqrt(sv),nrow=nrank, ncol=nrank)
   # }
-  
-  
+
+
   modstr <- do.call("sofar.modstr", modstr)
   ##init <- do.call("sofar.0", init)
   control <- do.call("sofar.control", control)
@@ -1024,7 +1025,7 @@ sofar.fit <- function(Y,
       lasso    = matrix(1., p, nrank),
       adlasso  = (ini$coefSVD$u %*%
                     diag(ini$coefSVD$d/sqrt(sv),
-                         nrow = length(ini$coefSVD$d)) 
+                         nrow = length(ini$coefSVD$d))
                   ) ^ (-wgamma),
       glasso   = rep(1., p),
       adglasso =
@@ -1046,7 +1047,7 @@ sofar.fit <- function(Y,
         sqrt(rowSums((
           ini$coefSVD$v %*%
             diag(ini$coefSVD$d/sqrt(su),
-                 nrow = length(ini$coefSVD$d)) 
+                 nrow = length(ini$coefSVD$d))
         ) ^2)) ^ (-wgamma)
     )
     if (substr(methodA, 1, 2) == "ad" ||
@@ -1130,13 +1131,13 @@ sofar.fit <- function(Y,
                      epsilon = innerEpsilon)
     )
     U <- t(sqrt(su)*t(Ustep$U))
- 
+
     ## 2. V step
     tmp <- crossprod(XY, U) + mu * (B - GB)
     tmp <- t(D*sqrt(sv)* t(tmp))
     XYvsvd <- svd(tmp)
     V <- t(sqrt(sv)*tcrossprod(XYvsvd$v,XYvsvd$u))
-    
+
     ## 3. D step
     Xd1 <- matrix(0., n * q, nrank)
     Xd2 <- matrix(0., p * nrank, nrank)
@@ -1222,7 +1223,7 @@ sofar.fit <- function(Y,
     del <- sqrt(sum((A - A0) ^ 2) + sum((B - B0) ^ 2))
     if (del < epsilon){
       #cat("del = ", del , "\n")
-      break      
+      break
     }
 
   }
@@ -1240,7 +1241,7 @@ sofar.fit <- function(Y,
   D[abs(D) / sum(D) < tol] <- 0
   #dorder <- order(D, decreasing = TRUE)
   dorder <- 1:length(invD)
-  
+
   ## D <- as.vector(d) # diag(nrow=nrank, ncol=nrank, as.vector(d[dorder]))
 
   ## Update estimated rank
@@ -1344,7 +1345,7 @@ sofar.lammax <- function(Y,
   nr <- nrank
   xrank <- sum(svd(X)$d > 1e-4)
 
-  
+
   if(is.null(su)) su <- rep(1,nrank)
   #   Su_inv <- diag(nrow=nrank, ncol=nrank)
   #   Su_inv_sqrt <- diag(nrow=nrank, ncol=nrank)
@@ -1356,11 +1357,11 @@ sofar.lammax <- function(Y,
   #   Sv_inv <- diag(nrow=nrank, ncol=nrank)
   #   Sv_inv_sqrt <- diag(nrow=nrank, ncol=nrank)
   # }else{
-  #   Sv_inv <- diag(sqrt(sv),nrow=nrank, ncol=nrank)    
-  #   Sv_inv_sqrt <- diag(1/sqrt(sv),nrow=nrank, ncol=nrank)    
+  #   Sv_inv <- diag(sqrt(sv),nrow=nrank, ncol=nrank)
+  #   Sv_inv_sqrt <- diag(1/sqrt(sv),nrow=nrank, ncol=nrank)
   # }
-  
-  
+
+
   if (is.null(U) | is.null(V) | is.null(D)) {
     ini <- rrr.fit(Y, X, nrank = nrank, coefSVD = TRUE)
     U <- t(sqrt(su)*t(ini$coefSVD$u))
@@ -1386,11 +1387,10 @@ sofar.lammax <- function(Y,
     WA <- switch(
       methodA,
       lasso = matrix(nrow = p, ncol = nrank, 1),
-      adlasso = (ini$coefSVD$u %*%
-                   diag(ini$coefSVD$d/sqrt(sv),
-                        nrow = length(ini$coefSVD$d))) ^ {
-                          -wgamma
-                        },
+      adlasso = ((
+          ini$coefSVD$u %*%
+          diag(ini$coefSVD$d/sqrt(sv), nrow = length(ini$coefSVD$d))
+      ) + 1e-8) ^ (- wgamma),
       glasso = rep(1, p),
       adglasso = apply(ini$coefSVD$u
                        %*% diag(ini$coefSVD$d/sqrt(sv),
@@ -1403,11 +1403,10 @@ sofar.lammax <- function(Y,
     WB <- switch(
       methodB,
       lasso = matrix(nrow = q, ncol = nrank, 1),
-      adlasso = (ini$coefSVD$v %*%
-                   diag(ini$coefSVD$d/sqrt(su),
-                        nrow = length(ini$coefSVD$d))) ^ {
-                          -wgamma
-                        },
+      adlasso = ((
+          ini$coefSVD$v %*%
+          diag(ini$coefSVD$d/sqrt(su), nrow = length(ini$coefSVD$d))
+      ) + 1e-8) ^ (- wgamma),
       glasso = rep(1, q),
       adglasso = apply(ini$coefSVD$v %*%
                          diag(ini$coefSVD$d/sqrt(su),
@@ -1421,7 +1420,7 @@ sofar.lammax <- function(Y,
         substr(methodB, 1, 2) == "ad") {
       if (is.null(ini))
         ini <- rrr.fit(Y, X, nrank = nrank, coefSVD = TRUE)
-      Wd <- (ini$coefSVD$d/sqrt(su)/sqrt(sv)) ^ {
+      Wd <- (ini$coefSVD$d / sqrt(su) / sqrt(sv) + 1e-8) ^ {
         -wgamma
       }
     } else{
@@ -1447,7 +1446,8 @@ sofar.lammax <- function(Y,
   iter <- 1
   diff <- vector()
   diff[1] <- conv * 2
-  while (diff[iter] > conv & iter < maxit) {
+
+  while (diff[iter] > conv && iter < maxit) {
     ## Store initial values before iterations
     U0 <- U
     V0 <- V
@@ -1470,7 +1470,7 @@ sofar.lammax <- function(Y,
     ##Xu <- XXsqrt
     XXu <- XXmu
     Du <- D
-    
+
     Ustep <- procrustes_RCpp(XYu,
                              XXu,
                              sqrt(su)*D,
@@ -1564,7 +1564,7 @@ sofar.lammax <- function(Y,
     iter <- iter + 1
     ## diff <- sqrt(sum((A%*%t(B)-A0%*%t(B0))^2))
     diff[iter] <-
-      sqrt(sum((A - A0) ^ 2) + sum((B - B0) ^ 2) + sum((O - O0) ^ 2))
+        sqrt(sum((A - A0) ^ 2) + sum((B - B0) ^ 2) + sum((O - O0) ^ 2))
   }
 
   list(lamA.max = lamA.max,
@@ -1593,7 +1593,7 @@ sofar.path.reduced <- function(Y,
   p <- ncol(X)
   q <- ncol(Y)
   n <- nrow(Y)
-  
+
   nlamA <- length(lamA)
   nlamB <- length(lamB)
   nlamD <- length(lamD)
@@ -1610,10 +1610,10 @@ sofar.path.reduced <- function(Y,
   #   Sv_inv <- diag(nrow=nrank, ncol=nrank)
   #   Sv_inv_sqrt <- diag(nrow=nrank, ncol=nrank)
   # }else{
-  #   Sv_inv <- diag(sqrt(sv),nrow=nrank, ncol=nrank)    
-  #   Sv_inv_sqrt <- diag(1/sqrt(sv),nrow=nrank, ncol=nrank)    
-  # }  
-  
+  #   Sv_inv <- diag(sqrt(sv),nrow=nrank, ncol=nrank)
+  #   Sv_inv_sqrt <- diag(1/sqrt(sv),nrow=nrank, ncol=nrank)
+  # }
+
   modstr <- do.call("sofar.modstr", modstr)
   control <- do.call("sofar.control", control)
 
@@ -1820,7 +1820,7 @@ sofar.cv <- function(Y,
 
   if(is.null(sv)) su <- rep(1,nrank)
   if(is.null(sv)) sv <- rep(1,nrank)
-  
+
   modstr <- do.call("sofar.modstr", modstr)
   ## init <- do.call("sofar.0", init)
   control <- do.call("sofar.control", control)

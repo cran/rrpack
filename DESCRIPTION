@@ -1,7 +1,7 @@
 Package: rrpack
 Title: Reduced-Rank Regression
-Version: 0.1-10
-Date: 2019-08-12
+Version: 0.1-11
+Date: 2019-11-09
 Authors@R: c(
     person(given = "Kun", family = "Chen",
            email = "kun.chen@uconn.edu",
@@ -13,10 +13,12 @@ Authors@R: c(
            comment = c(ORCID = "0000-0003-4401-7296"))
     )
 Description: Multivariate regression methodologies including
-    reduced-rank regression (RRR) proposed by
-    Chen et al. (2013) <doi:10.1093/biomet/ast036>,
-    reduced-rank ridge regression (RRS) proposed by
-    Mukherjee and Zhu (2011) <doi:10.1002/sam.10138>,
+    classical reduced-rank regression (RRR)
+    studied by Anderson (1951) <doi:10.1214/aoms/1177729580> and
+    Reinsel and Velu (1998) <doi:10.1007/978-1-4757-2853-8>,
+    reduced-rank regression via adaptive nuclear norm penalization
+    proposed by Chen et al. (2013) <doi:10.1093/biomet/ast036> and
+    Mukherjee et al. (2015) <doi:10.1093/biomet/asx080>,
     robust reduced-rank regression (R4) proposed by
     She and Chen (2017) <doi:10.1093/biomet/asx032>,
     generalized/mixed-response reduced-rank regression (mRRR) proposed by
@@ -35,10 +37,10 @@ LazyData: true
 Encoding: UTF-8
 RoxygenNote: 6.1.1
 NeedsCompilation: yes
-Packaged: 2019-08-12 15:05:45 UTC; wenjie
+Packaged: 2019-11-09 21:53:30 UTC; wenjie
 Author: Kun Chen [aut, cre] (<https://orcid.org/0000-0003-3579-5467>),
   Wenjie Wang [ctb] (<https://orcid.org/0000-0003-0363-3180>),
   Jun Yan [ctb] (<https://orcid.org/0000-0003-4401-7296>)
 Maintainer: Kun Chen <kun.chen@uconn.edu>
 Repository: CRAN
-Date/Publication: 2019-08-27 23:40:02 UTC
+Date/Publication: 2019-11-18 15:30:02 UTC
