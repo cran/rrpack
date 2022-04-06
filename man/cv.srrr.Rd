@@ -4,9 +4,18 @@
 \alias{cv.srrr}
 \title{Row-sparse reduced-rank regression tuned by cross validation}
 \usage{
-cv.srrr(Y, X, nrank = 1, method = c("glasso", "adglasso"), nfold = 5,
-  norder = NULL, A0 = NULL, V0 = NULL, modstr = list(),
-  control = list())
+cv.srrr(
+  Y,
+  X,
+  nrank = 1,
+  method = c("glasso", "adglasso"),
+  nfold = 5,
+  norder = NULL,
+  A0 = NULL,
+  V0 = NULL,
+  modstr = list(),
+  control = list()
+)
 }
 \arguments{
 \item{Y}{response matrix}

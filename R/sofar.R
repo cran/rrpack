@@ -926,7 +926,6 @@ sofar.procrustes <- function(XY,
 
 
 ###Fit SoFAR with fixed tuning parameters
-##' @importFrom lassoshooting lassoshooting
 sofar.fit <- function(Y,
                       X,
                       XX = NULL,
@@ -1168,12 +1167,8 @@ sofar.fit <- function(Y,
       Wdminv <- 1. / Wd  ## a vector
       Xdw <- Wdminv * Xd %*% diag(Wdminv, nrow = length(Wdminv))
       Ydw <- Wdminv * Yd
-      D <- Wdminv * as.vector(lassoshooting(
-        XtX = Xdw,
-        Xty = Ydw,
-        lambda = lamD
-      )$coef)
-    } ## use penreg in place lassoshooting
+      D <- Wdminv * lasso_shooting(xtx = Xdw, xty = Ydw, lambda = lamD)
+    }
 
     ## FIXME: should this be a tolerence?
     D[D < 0] <- 0

@@ -6,6 +6,26 @@
 
 using namespace Rcpp;
 
+#ifdef RCPP_USE_GLOBAL_ROSTREAM
+Rcpp::Rostream<true>&  Rcpp::Rcout = Rcpp::Rcpp_cout_get();
+Rcpp::Rostream<false>& Rcpp::Rcerr = Rcpp::Rcpp_cerr_get();
+#endif
+
+// lasso_shooting
+Rcpp::NumericVector lasso_shooting(const arma::mat& xtx, const arma::vec& xty, const double lambda, const double epsilon, const unsigned int max_iter);
+RcppExport SEXP _rrpack_lasso_shooting(SEXP xtxSEXP, SEXP xtySEXP, SEXP lambdaSEXP, SEXP epsilonSEXP, SEXP max_iterSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< const arma::mat& >::type xtx(xtxSEXP);
+    Rcpp::traits::input_parameter< const arma::vec& >::type xty(xtySEXP);
+    Rcpp::traits::input_parameter< const double >::type lambda(lambdaSEXP);
+    Rcpp::traits::input_parameter< const double >::type epsilon(epsilonSEXP);
+    Rcpp::traits::input_parameter< const unsigned int >::type max_iter(max_iterSEXP);
+    rcpp_result_gen = Rcpp::wrap(lasso_shooting(xtx, xty, lambda, epsilon, max_iter));
+    return rcpp_result_gen;
+END_RCPP
+}
 // penreg_Rcpp
 arma::vec penreg_Rcpp(arma::vec Y, arma::mat X, double lambda, arma::vec beta0, List control);
 RcppExport SEXP _rrpack_penreg_Rcpp(SEXP YSEXP, SEXP XSEXP, SEXP lambdaSEXP, SEXP beta0SEXP, SEXP controlSEXP) {

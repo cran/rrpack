@@ -67,10 +67,10 @@ available include
    \item{gamma}: A scalar power parameter of the adaptive weights in
 \code{penalty == "ann"}.
 
-\item{nlambda}: The number of lambda values; no effect if
+   \item{nlambda}: The number of lambda values; no effect if
 \code{penalty == "count"}.
 
-\item{lambda}: A vector of user-specified rank values if
+   \item{lambda}: A vector of user-specified rank values if
 \code{penalty == "count"} or a vector of penalty values if \code{penalty ==
 "ann"}.
 }
