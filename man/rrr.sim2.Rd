@@ -4,8 +4,18 @@
 \alias{rrr.sim2}
 \title{Simulation model 2}
 \usage{
-rrr.sim2(n = 100, p = 50, p0 = 10, q = 50, q0 = 10, nrank = 3, s2n = 1,
-         sigma = NULL, rho_X = 0.5, rho_E = 0)
+rrr.sim2(
+  n = 100,
+  p = 50,
+  p0 = 10,
+  q = 50,
+  q0 = 10,
+  nrank = 3,
+  s2n = 1,
+  sigma = NULL,
+  rho_X = 0.5,
+  rho_E = 0
+)
 }
 \arguments{
 \item{n}{sample size}

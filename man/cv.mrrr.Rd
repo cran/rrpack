@@ -5,11 +5,23 @@
 \title{Mixed-response reduced-rank regression with rank selected by
 cross validation}
 \usage{
-cv.mrrr(Y, X, is.pca = NULL, offset = NULL, ctrl.id = c(),
-        family = list(gaussian(), binomial(), poisson()),
-        familygroup = NULL, maxrank = min(ncol(Y), ncol(X)),
-        penstr = list(), init = list(), control = list(), nfold = 5,
-        foldid = NULL, nlam = 20, warm = FALSE)
+cv.mrrr(
+  Y,
+  X,
+  is.pca = NULL,
+  offset = NULL,
+  ctrl.id = c(),
+  family = list(gaussian(), binomial(), poisson()),
+  familygroup = NULL,
+  maxrank = min(ncol(Y), ncol(X)),
+  penstr = list(),
+  init = list(),
+  control = list(),
+  nfold = 5,
+  foldid = NULL,
+  nlam = 20,
+  warm = FALSE
+)
 }
 \arguments{
 \item{Y}{response matrix}

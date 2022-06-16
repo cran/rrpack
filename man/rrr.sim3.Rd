@@ -4,8 +4,14 @@
 \alias{rrr.sim3}
 \title{Simulation model 3}
 \usage{
-rrr.sim3(n = 100, p = 30, q.mix = c(5, 20, 5), nrank = 2,
-         intercept = rep(0.5,30), mis.prop = 0.2)
+rrr.sim3(
+  n = 100,
+  p = 30,
+  q.mix = c(5, 20, 5),
+  nrank = 2,
+  intercept = rep(0.5, 30),
+  mis.prop = 0.2
+)
 }
 \arguments{
 \item{n}{sample size}

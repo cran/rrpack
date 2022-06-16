@@ -3,10 +3,6 @@
 ##' Similar to the the RSSVD simulation model in Chen, Chan, Stenseth (2012),
 ##' JRSSB.
 ##'
-##' @usage
-##' rrr.sim1(n = 50, p = 25, q = 25, nrank = 3, s2n = 1, sigma = NULL,
-##'          rho_X = 0.5, rho_E = 0)
-##'
 ##' @param n,p,q model dimensions
 ##' @param nrank model rank
 ##' @param s2n signal to noise ratio
@@ -106,10 +102,6 @@ rrr.sim1 <-
 ##'
 ##' Similar to the the SRRR simulation model in Chen and Huang (2012), JASA
 ##'
-##' @usage
-##' rrr.sim2(n = 100, p = 50, p0 = 10, q = 50, q0 = 10, nrank = 3, s2n = 1,
-##'          sigma = NULL, rho_X = 0.5, rho_E = 0)
-##'
 ##' @param n sample size
 ##' @param p number of predictors
 ##' @param p0 number of relevant predictors
@@ -194,10 +186,6 @@ rrr.sim2 <-
 ##' Simulation model 3
 ##'
 ##' Generate data from a mixed-response reduced-rank regression model
-##'
-##' @usage
-##' rrr.sim3(n = 100, p = 30, q.mix = c(5, 20, 5), nrank = 2,
-##'          intercept = rep(0.5,30), mis.prop = 0.2)
 ##'
 ##' @param n sample size
 ##' @param p number of predictors
@@ -295,11 +283,6 @@ rrr.sim3 <-
 ##' Simulation model 4
 ##'
 ##' Generate data from a mean-shifted reduced-rank regression model
-##'
-##' @usage
-##' rrr.sim4(n = 100, p = 12, q = 8, nrank = 3, s2n = 1, rho_X = 0, rho_E = 0,
-##'          nout = 10, vout = NULL, voutsd = 2, nlev = 10, vlev = 10,
-##'          vlevsd = NULL, SigmaX = CorrCS, SigmaE = CorrCS)
 ##'
 ##' @param n sample size
 ##' @param p number of predictors
@@ -426,11 +409,6 @@ rrr.sim4 <- function(n = 100,
 ##' Simulation model 5
 ##'
 ##' Generate data from a mean-shifted reduced-rank regression model
-##'
-##' @usage
-##' rrr.sim5(n = 40, p = 100, q = 50, nrank = 5, rx = 10, s2n = 1, rho_X = 0,
-##'          rho_E = 0, nout = 10, vout = NULL, voutsd = 2, nlev = 10,
-##'          vlev = 10, vlevsd = NULL, SigmaX = CorrCS, SigmaE = CorrCS)
 ##'
 ##' @param n sample size
 ##' @param p number of predictors

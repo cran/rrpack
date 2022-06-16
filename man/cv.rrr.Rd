@@ -4,8 +4,14 @@
 \alias{cv.rrr}
 \title{Reduced-rank regression with rank selected by cross validation}
 \usage{
-cv.rrr(Y, X, nfold = 10, maxrank = min(dim(Y), dim(X)),
-       norder = NULL, coefSVD = FALSE)
+cv.rrr(
+  Y,
+  X,
+  nfold = 10,
+  maxrank = min(dim(Y), dim(X)),
+  norder = NULL,
+  coefSVD = FALSE
+)
 }
 \arguments{
 \item{Y}{response matrix}

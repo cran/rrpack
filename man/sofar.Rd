@@ -4,9 +4,17 @@
 \alias{sofar}
 \title{Sparse orthogonal factor regression}
 \usage{
-sofar(Y, X, nrank = 1, su = NULL, sv = NULL,
-      ic.type = c("GIC", "BIC", "AIC", "GCV"),
-      modstr = list(), control = list(), screening = FALSE)
+sofar(
+  Y,
+  X,
+  nrank = 1,
+  su = NULL,
+  sv = NULL,
+  ic.type = c("GIC", "BIC", "AIC", "GCV"),
+  modstr = list(),
+  control = list(),
+  screening = FALSE
+)
 }
 \arguments{
 \item{Y}{response matrix}

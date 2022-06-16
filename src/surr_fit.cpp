@@ -1,7 +1,5 @@
 #include <RcppArmadillo.h>
-// [[Rcpp::depends(RcppArmadillo)]]
 
-#include <Rcpp.h>
 using namespace arma;
 using namespace Rcpp;
 using namespace std;
@@ -37,7 +35,7 @@ arma::vec penreg_Rcpp_XY(arma::vec XY,
 //// @param beta0 initial value of regression coefficient vector
 //// @param control a list of parameters controling the fitting process
 //// @return estimated regression coefficient vector
-//// [[Rcpp::export]]
+
 //arma::vec penreg_Rcpp(arma::vec Y,
 //            arma::mat X,
 //                    double lambda,
@@ -88,7 +86,7 @@ arma::vec penreg_Rcpp_XY(arma::vec XY,
 // // @param Xtran weight transformed X; if NULL X\%*\% WU is used
 // // @param control a list of parameters controlling the fitting process
 // // @return S3 \code{surr} object as `surr.fit'
-// // [[Rcpp::export]]
+
 // Rcpp::List surr_fit_Rcpp_old(arma::mat Y, arma::mat X, double lambda,
 //         arma::vec U0, arma::vec V0, //double D0,
 //         arma::vec WU, arma::vec WV,
@@ -105,7 +103,7 @@ arma::vec penreg_Rcpp_XY(arma::vec XY,
 //   Rcpp::List innerControl;
 //   innerControl["epsilon"] = control["innerEpsilon"];
 //   innerControl["maxit"] = control["innerMaxit"];
-//   //innerControl["trace"] = TRUE;
+//   //innerControl["trace"] = true;
 //
 //   //matrices used in iterations
 //   arma::vec U = U0;
@@ -151,7 +149,7 @@ arma::vec penreg_Rcpp_XY(arma::vec XY,
 //     D = norm(U,1);
 //     if (D <  std::numeric_limits<double>::epsilon() && D > -std::numeric_limits<double>::epsilon()){
 //       D = 0.0;
-//       flag = TRUE;
+//       flag = true;
 //       conv = epsilon;
 //       conv *= 2;
 //       break;
@@ -163,7 +161,7 @@ arma::vec penreg_Rcpp_XY(arma::vec XY,
 //     D = norm(V,1);
 //     if (D <  std::numeric_limits<double>::epsilon() && D > -std::numeric_limits<double>::epsilon()){
 //       D = 0.0;
-//       flag = TRUE;
+//       flag = true;
 //       conv = epsilon;
 //       conv *= 2;
 //       break;
@@ -174,7 +172,7 @@ arma::vec penreg_Rcpp_XY(arma::vec XY,
 //     if(conv <= epsilon) break;
 //   }
 //
-//   if(flag == TRUE){
+//   if(flag == true){
 //     res = y;
 //     sse = pow(norm(y,2),2);
 //     V = V.zeros();
@@ -203,9 +201,9 @@ arma::vec penreg_Rcpp_XY(arma::vec XY,
 //   }
 //
 //   if(conv <= epsilon){
-//     converged = TRUE;
+//     converged = true;
 //   }else{
-//     converged = FALSE;
+//     converged = false;
 //   }
 //   arma::vec df(2);
 //   df(0) = dfu;
@@ -261,7 +259,7 @@ Rcpp::List surr_fit_Rcpp(arma::mat Y, arma::mat X, double lambda,
   Rcpp::List innerControl;
   innerControl["epsilon"] = control["innerEpsilon"];
   innerControl["maxit"] = control["innerMaxit"];
-  //innerControl["trace"] = TRUE;
+  //innerControl["trace"] = true;
 
   //matrices used in iterations
   arma::vec U = U0;
@@ -294,7 +292,7 @@ Rcpp::List surr_fit_Rcpp(arma::mat Y, arma::mat X, double lambda,
   U = U/norm(U,1);
   V = V/norm(V,1);
 
-  bool flag = FALSE;
+  bool flag = false;
   for(int j = 1; j < maxit; j++){
 
     Up = U;
@@ -311,7 +309,7 @@ Rcpp::List surr_fit_Rcpp(arma::mat Y, arma::mat X, double lambda,
     D = norm(U,1);
     if (D <  std::numeric_limits<double>::epsilon() && D > -std::numeric_limits<double>::epsilon()){
       D = 0.0;
-      flag = TRUE;
+      flag = true;
       conv = epsilon;
       conv *= 2;
       break;
@@ -328,7 +326,7 @@ Rcpp::List surr_fit_Rcpp(arma::mat Y, arma::mat X, double lambda,
     D = norm(V,1);
     if (D <  std::numeric_limits<double>::epsilon() && D > -std::numeric_limits<double>::epsilon()){
       D = 0.0;
-      flag = TRUE;
+      flag = true;
       conv = epsilon;
       conv *= 2;
       break;
@@ -339,7 +337,7 @@ Rcpp::List surr_fit_Rcpp(arma::mat Y, arma::mat X, double lambda,
     if(conv <= epsilon) break;
   }
 
-  if(flag == TRUE){
+  if(flag){
     res = y;
     sse = pow(norm(y,2),2);
     V = V.zeros();
@@ -368,9 +366,9 @@ Rcpp::List surr_fit_Rcpp(arma::mat Y, arma::mat X, double lambda,
   }
 
   if(conv <= epsilon){
-    converged = TRUE;
+    converged = true;
   }else{
-    converged = FALSE;
+    converged = false;
   }
   arma::vec df(2);
   df(0) = dfu;

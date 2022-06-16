@@ -24,12 +24,6 @@
 ##'    \item{qr.tol}: QR decomposition tolerence.
 ##' }
 ##'
-##' @usage
-##' rrr(Y, X, penaltySVD = c("rank", "ann"),
-##'     ic.type = c("GIC","AIC","BIC","BICP","GCV"),
-##'     df.type = c("exact","naive"), maxrank = min(dim(Y), dim(X)),
-##'     modstr = list(), control = list())
-##'
 ##' @param Y a matrix of response (n by q)
 ##' @param X a matrix of covariate (n by p)
 ##' @param penaltySVD `rank': rank-constrainted estimation; `ann': adaptive
@@ -294,10 +288,6 @@ rrr <- function(Y,
 ##'
 ##' Reduced-rank regression with rank selected by cross validation
 ##'
-##' @usage
-##' cv.rrr(Y, X, nfold = 10, maxrank = min(dim(Y), dim(X)),
-##'        norder = NULL, coefSVD = FALSE)
-##'
 ##' @param Y response matrix
 ##' @param X covariate matrix
 ##' @param nfold number of folds
@@ -406,9 +396,6 @@ cv.rrr <- function (Y,
 ##' Given a response matrix and a covariate matrix, this function fits reduced
 ##' rank regression for a specified rank. It reduces to singular value
 ##' decomposition if the covariate matrix is the identity matrix.
-##'
-##' @usage
-##' rrr.fit(Y, X, nrank = 1, weight = NULL, coefSVD = FALSE)
 ##'
 ##' @param Y a matrix of response (n by q)
 ##' @param X a matrix of covariate (n by p)

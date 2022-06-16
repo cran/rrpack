@@ -1,14 +1,9 @@
 #include <RcppArmadillo.h>
-// [[Rcpp::depends(RcppArmadillo)]]
 
-#include <Rcpp.h>
 using namespace arma;
 using namespace Rcpp;
 using namespace std;
 using namespace sugar;
-
-
-
 
 // [[Rcpp::export]]
 Rcpp::List procrustes_RCpp (arma::mat XY, arma::mat XX, arma::mat D, double rho2,

@@ -4,8 +4,18 @@
 \alias{cv.sofar}
 \title{Sparse orthognal factor regression tuned by cross validation}
 \usage{
-cv.sofar(Y, X, nrank = 1, su = NULL, sv = NULL, nfold = 5, norder = NULL, modstr = list(),
-         control = list(), screening = FALSE)
+cv.sofar(
+  Y,
+  X,
+  nrank = 1,
+  su = NULL,
+  sv = NULL,
+  nfold = 5,
+  norder = NULL,
+  modstr = list(),
+  control = list(),
+  screening = FALSE
+)
 }
 \arguments{
 \item{Y}{response matrix}

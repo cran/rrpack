@@ -4,9 +4,24 @@
 \alias{rrr.sim5}
 \title{Simulation model 5}
 \usage{
-rrr.sim5(n = 40, p = 100, q = 50, nrank = 5, rx = 10, s2n = 1, rho_X = 0,
-         rho_E = 0, nout = 10, vout = NULL, voutsd = 2, nlev = 10,
-         vlev = 10, vlevsd = NULL, SigmaX = CorrCS, SigmaE = CorrCS)
+rrr.sim5(
+  n = 40,
+  p = 100,
+  q = 50,
+  nrank = 5,
+  rx = 10,
+  s2n = 1,
+  rho_X = 0,
+  rho_E = 0,
+  nout = 10,
+  vout = NULL,
+  voutsd = 2,
+  nlev = 10,
+  vlev = 10,
+  vlevsd = NULL,
+  SigmaX = "CorrCS",
+  SigmaE = "CorrCS"
+)
 }
 \arguments{
 \item{n}{sample size}

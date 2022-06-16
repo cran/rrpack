@@ -35,13 +35,6 @@
 ##'    \item{sv.tol}: tolerance for singular values.
 ##' }
 ##'
-##' @name sofar
-##'
-##' @usage
-##' sofar(Y, X, nrank = 1, su = NULL, sv = NULL,
-##'       ic.type = c("GIC", "BIC", "AIC", "GCV"),
-##'       modstr = list(), control = list(), screening = FALSE)
-##'
 ##' @param Y response matrix
 ##' @param X covariate matrix
 ##' @param nrank an integer specifying the desired rank/number of factors
@@ -103,8 +96,6 @@
 ##' crossprod(fit1$V) #check orthogonality
 ##' }
 ##'
-##' @importFrom Rcpp evalCpp
-##' @useDynLib rrpack
 ##' @export
 sofar <- function(Y,
                   X,
@@ -423,10 +414,6 @@ sofar <- function(Y,
 ##'    \item{innerMaxit}: maximum number of iterations for inner subroutines.
 ##'    \item{sv.tol}: tolerance for singular values.
 ##' }
-##'
-##' @usage
-##' cv.sofar(Y, X, nrank = 1, su = NULL, sv = NULL, nfold = 5, norder = NULL, modstr = list(),
-##'          control = list(), screening = FALSE)
 ##'
 ##' @param Y response matrix
 ##' @param X covariate matrix

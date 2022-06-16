@@ -4,10 +4,18 @@
 \alias{srrr}
 \title{Row-sparse reduced-eank regresssion}
 \usage{
-srrr(Y, X, nrank = 2, method = c("glasso", "adglasso"),
-     ic.type = c("BIC", "BICP", "AIC", "GCV", "GIC"),
-     A0 = NULL, V0 = NULL, modstr = list(),
-     control = list(), screening = FALSE)
+srrr(
+  Y,
+  X,
+  nrank = 2,
+  method = c("glasso", "adglasso"),
+  ic.type = c("BIC", "BICP", "AIC", "GCV", "GIC"),
+  A0 = NULL,
+  V0 = NULL,
+  modstr = list(),
+  control = list(),
+  screening = FALSE
+)
 }
 \arguments{
 \item{Y}{response matrix}

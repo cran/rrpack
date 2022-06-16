@@ -4,8 +4,16 @@
 \alias{rrr.sim1}
 \title{Simulation model 1}
 \usage{
-rrr.sim1(n = 50, p = 25, q = 25, nrank = 3, s2n = 1, sigma = NULL,
-         rho_X = 0.5, rho_E = 0)
+rrr.sim1(
+  n = 50,
+  p = 25,
+  q = 25,
+  nrank = 3,
+  s2n = 1,
+  sigma = NULL,
+  rho_X = 0.5,
+  rho_E = 0
+)
 }
 \arguments{
 \item{n, p, q}{model dimensions}

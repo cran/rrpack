@@ -4,10 +4,19 @@
 \alias{mrrr}
 \title{Generalized or mixed-response reduced-rank regression}
 \usage{
-mrrr(Y, X, is.pca = NULL, offset = NULL, ctrl.id = c(),
-     family = list(gaussian(), binomial()),
-     familygroup = NULL, maxrank = min(ncol(Y), ncol(X)),
-     penstr = list(), init = list(), control = list())
+mrrr(
+  Y,
+  X,
+  is.pca = NULL,
+  offset = NULL,
+  ctrl.id = c(),
+  family = list(gaussian(), binomial()),
+  familygroup = NULL,
+  maxrank = min(ncol(Y), ncol(X)),
+  penstr = list(),
+  init = list(),
+  control = list()
+)
 }
 \arguments{
 \item{Y}{response matrix}

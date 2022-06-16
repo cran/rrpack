@@ -1,8 +1,6 @@
 #include <RcppArmadillo.h>
-// [[Rcpp::depends(RcppArmadillo)]]
-
-#include <Rcpp.h>
 #include <math.h>
+
 using namespace arma;
 using namespace Rcpp;
 using namespace std;
@@ -25,7 +23,7 @@ Rcpp::List MGlasso_Rcpp (arma::mat Y, arma::mat X, arma::vec lam, arma::mat B0, 
   //if (B0.is_finite()) {
     B1 = B0;
   //} else {
-  //  Rcpp::List ini = rrr_cpp(Y, X, 1, FALSE, mat1, TRUE, TRUE);
+  //  Rcpp::List ini = rrr_cpp(Y, X, 1, false, mat1, true, true);
   //  arma::mat iniC = ini["C_ls"];
   //  B1 = iniC;
   //}
@@ -103,7 +101,7 @@ Rcpp::List srrr_Rcpp (arma::mat Y, arma::mat X, String method, arma::mat A0, arm
   Rcpp::List out_MGlasso;
   Rcpp::List out;
 
-  //ini = rrr_cpp(Y, X, nrank, FALSE, mat1, TRUE, TRUE);
+  //ini = rrr_cpp(Y, X, nrank, false, mat1, true, true);
   //arma::mat iniU = ini["U"];
   //arma::vec inid = ini["D"];
   //arma::mat iniV = ini["V"];
@@ -173,9 +171,9 @@ Rcpp::List srrr_Rcpp (arma::mat Y, arma::mat X, String method, arma::mat A0, arm
   double dfqn2 = pow((1 - df/(q*n)), 2);
   GCV = sse/(q*n*dfqn2);
   if (diff(iter) <= conv) {
-    conv_flag = TRUE;
+    conv_flag = true;
   } else {
-    conv_flag = FALSE;
+    conv_flag = false;
   }
 
   out["diff"] = diff;

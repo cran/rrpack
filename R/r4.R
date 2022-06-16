@@ -22,12 +22,6 @@
 ##'     \item{tol}: tolerance.
 ##' }
 ##'
-##' @usage
-##' r4(Y, X, maxrank = min(dim(Y), dim(X)),
-##'    method = c("rowl0", "rowl1", "entrywise"),
-##'    Gamma = NULL, ic.type = c("AIC", "BIC", "PIC"),
-##'    modstr = list(), control = list())
-##'
 ##' @param Y a matrix of response (n by q)
 ##' @param X a matrix of covariate (n by p)
 ##' @param maxrank maximum rank for fitting

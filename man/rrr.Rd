@@ -4,10 +4,16 @@
 \alias{rrr}
 \title{Multivariate reduced-rank linear regression}
 \usage{
-rrr(Y, X, penaltySVD = c("rank", "ann"),
-    ic.type = c("GIC","AIC","BIC","BICP","GCV"),
-    df.type = c("exact","naive"), maxrank = min(dim(Y), dim(X)),
-    modstr = list(), control = list())
+rrr(
+  Y,
+  X,
+  penaltySVD = c("rank", "ann"),
+  ic.type = c("GIC", "AIC", "BIC", "BICP", "GCV"),
+  df.type = c("exact", "naive"),
+  maxrank = min(dim(Y), dim(X)),
+  modstr = list(),
+  control = list()
+)
 }
 \arguments{
 \item{Y}{a matrix of response (n by q)}

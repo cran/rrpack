@@ -28,12 +28,6 @@
 ##'     specified rank.
 ##' }
 ##'
-##' @usage
-##' mrrr(Y, X, is.pca = NULL, offset = NULL, ctrl.id = c(),
-##'      family = list(gaussian(), binomial()),
-##'      familygroup = NULL, maxrank = min(ncol(Y), ncol(X)),
-##'      penstr = list(), init = list(), control = list())
-##'
 ##' @param Y response matrix
 ##' @param X covariate matrix
 ##' @param is.pca If TRUE, mixed principal component analysis with X=I
@@ -541,13 +535,6 @@ mrrr <- function(Y,
 
 ##' Mixed-response reduced-rank regression with rank selected by
 ##' cross validation
-##'
-##' @usage
-##' cv.mrrr(Y, X, is.pca = NULL, offset = NULL, ctrl.id = c(),
-##'         family = list(gaussian(), binomial(), poisson()),
-##'         familygroup = NULL, maxrank = min(ncol(Y), ncol(X)),
-##'         penstr = list(), init = list(), control = list(), nfold = 5,
-##'         foldid = NULL, nlam = 20, warm = FALSE)
 ##'
 ##' @param Y response matrix
 ##' @param X covariate matrix

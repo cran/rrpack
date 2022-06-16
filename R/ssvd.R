@@ -19,10 +19,6 @@
 ##'     \item{df.tol}: tolerance.
 ##' }
 ##'
-##' @usage
-##' rssvd(Y, X, nrank, ic.type = c("BIC", "BICP", "AIC"), orthX = FALSE,
-##'       control = list(), screening = FALSE)
-##'
 ##' @param Y response matrix
 ##' @param X covariate matrix
 ##' @param nrank integer specification of the desired rank

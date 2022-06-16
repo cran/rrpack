@@ -4,10 +4,16 @@
 \alias{r4}
 \title{Robust reduced-rank regression}
 \usage{
-r4(Y, X, maxrank = min(dim(Y), dim(X)),
-   method = c("rowl0", "rowl1", "entrywise"),
-   Gamma = NULL, ic.type = c("AIC", "BIC", "PIC"),
-   modstr = list(), control = list())
+r4(
+  Y,
+  X,
+  maxrank = min(dim(Y), dim(X)),
+  method = c("rowl0", "rowl1", "entrywise"),
+  Gamma = NULL,
+  ic.type = c("AIC", "BIC", "PIC"),
+  modstr = list(),
+  control = list()
+)
 }
 \arguments{
 \item{Y}{a matrix of response (n by q)}

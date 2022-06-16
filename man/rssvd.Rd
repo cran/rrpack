@@ -4,8 +4,15 @@
 \alias{rssvd}
 \title{Reduced-rank regression with a sparse singular value decomposition}
 \usage{
-rssvd(Y, X, nrank, ic.type = c("BIC", "BICP", "AIC"), orthX = FALSE,
-      control = list(), screening = FALSE)
+rssvd(
+  Y,
+  X,
+  nrank,
+  ic.type = c("BIC", "BICP", "AIC"),
+  orthX = FALSE,
+  control = list(),
+  screening = FALSE
+)
 }
 \arguments{
 \item{Y}{response matrix}
