@@ -1,8 +1,8 @@
-b887dc5bd67e7186f66023e04c143c89 *DESCRIPTION
+18256cea36b4d9c366572128aea80a8b *DESCRIPTION
 82e8b3b76cc7c7d25fa8112c6bf62178 *NAMESPACE
 8c787c527a7b84193ab158729a4e2b32 *R/RcppExports.R
 9cfcf91797478478d78e4d9b6322cb76 *R/coef.R
-4c966905bcc3ec5dd300feafc4adabe0 *R/mrrr.R
+1e2d5c470a0faf31545345bf0108e508 *R/mrrr.R
 48230e6221dabf19b67303d85a62d9a4 *R/penreg.R
 bc49a877756bdcd6afc8db18b73f839d *R/penthr.R
 b93bdee68a97585ee6d3be689b5a21f9 *R/plot.R
@@ -22,7 +22,7 @@ aeb14ab684ac796436d76bdbe27cdd93 *man/cv.mrrr.Rd
 8b8100c8defac7bb0ead2fd09a85c442 *man/cv.rrr.Rd
 262d726675ffa7a62de79b43d2d0eea8 *man/cv.sofar.Rd
 00e2df955ac0cd1305c7aa68b5104a92 *man/cv.srrr.Rd
-1af45edd1f5a82466dba78f337adab4f *man/mrrr.Rd
+91f601bda004398369ce005df776fad5 *man/mrrr.Rd
 a6d72292630e023d7ee3c965d717c56b *man/plot.Rd
 d94e1a506925e45b21ea3515b75ffcaf *man/r4.Rd
 837fef24c2a7f3875de03fa9beb35a50 *man/rrpack-coef.Rd
@@ -40,7 +40,7 @@ afae80fbc70f212003fe942ab47426a5 *man/rrr.leverage.Rd
 6abdfb2def00367beb71988ff300c9b1 *man/sofar.Rd
 0b7d3efd83580ba0813a6309202fe511 *man/srrr.Rd
 9921832ac3b4b1bde8da66c91fe64d44 *man/summary.Rd
-291180567fdb5e69a1e3e8d671df0540 *src/Makevars
+3ee0c1b27d69fd4a69b90ade49887f1a *src/Makevars
 83c45c54aba65dbc463f65f150da2f59 *src/RRRR.c
 3fd08c6dc1c52db92f95e6dc0776c31a *src/RcppExports.cpp
 065db93fdd06e07839cb863126e07222 *src/lasso_shooting.cpp

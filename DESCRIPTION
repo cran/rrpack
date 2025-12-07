@@ -1,6 +1,6 @@
 Package: rrpack
 Title: Reduced-Rank Regression
-Version: 0.1-13
+Version: 0.1-14
 Authors@R: c(
     person(given = "Kun", family = "Chen",
            email = "kun.chen@uconn.edu",
@@ -33,12 +33,12 @@ Imports: ggplot2, glmnet, MASS, Rcpp (>= 0.12.0)
 LinkingTo: Rcpp, RcppArmadillo
 License: GPL (>= 3)
 Encoding: UTF-8
-RoxygenNote: 7.2.0
+RoxygenNote: 7.3.3
 NeedsCompilation: yes
-Packaged: 2022-06-15 15:49:54 UTC; wenjie
-Author: Kun Chen [aut, cre] (<https://orcid.org/0000-0003-3579-5467>),
-  Wenjie Wang [aut] (<https://orcid.org/0000-0003-0363-3180>),
-  Jun Yan [ctb] (<https://orcid.org/0000-0003-4401-7296>)
+Packaged: 2025-12-04 14:31:40 UTC; kun.chen
+Author: Kun Chen [aut, cre] (ORCID: <https://orcid.org/0000-0003-3579-5467>),
+  Wenjie Wang [aut] (ORCID: <https://orcid.org/0000-0003-0363-3180>),
+  Jun Yan [ctb] (ORCID: <https://orcid.org/0000-0003-4401-7296>)
 Maintainer: Kun Chen <kun.chen@uconn.edu>
 Repository: CRAN
-Date/Publication: 2022-06-16 06:40:02 UTC
+Date/Publication: 2025-12-07 06:50:02 UTC

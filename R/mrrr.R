@@ -11,14 +11,14 @@
 ##'        treated as zero.
 ##'    \item{sv.tol}: tolerance for singular values.
 ##'    \item{maxit}: integer giving the maximal number of iterations.
-##'    \item{trace:}{logical indicating if tracing the objective is needed.}
-##'    \item{conv.obj:}{if TRUE, track objective function.}
-##'    \item{equal.phi:}{if TRUE, use a single dispersion parameter for Gaussian
-##'        responses.}
-##'    \item{plot.obj:}{if TRUE, plot obj values along iterations; for checking
-##'        only}
-##'    \item{plot.cv:}{if TRUE, plot cross validation error.}
-##'    \item{gammaC0:}{adaptive scaling to speed up computation.}
+##'    \item{trace:}: logical indicating if tracing the objective is needed.
+##'    \item{conv.obj:}: if TRUE, track objective function.
+##'    \item{equal.phi:}: if TRUE, use a single dispersion parameter for Gaussian
+##'        responses.
+##'    \item{plot.obj:}: if TRUE, plot obj values along iterations; for checking
+##'        only
+##'    \item{plot.cv:}: if TRUE, plot cross validation error.
+##'    \item{gammaC0:}: adaptive scaling to speed up computation.
 ##' }
 ##' Similarly, the available elements for arguments \code{penstr} specifying
 ##' penalty structure of SVD include
